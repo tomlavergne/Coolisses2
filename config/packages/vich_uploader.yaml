@@ -1,0 +1,66 @@
+vich_uploader:
+  db_driver: orm
+  metadata:
+    type: attribute
+
+  mappings:
+    actualite:
+      uri_prefix: /images/actualite
+      upload_destination: "%kernel.project_dir%/public/images/actualite"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    partenaire:
+      uri_prefix: /images/partenaire
+      upload_destination: "%kernel.project_dir%/public/images/partenaire"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    bruitImage:
+      uri_prefix: /images/bruitImage
+      upload_destination: "%kernel.project_dir%/public/images/bruitImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    bruitPDF:
+      uri_prefix: /images/bruitPDF
+      upload_destination: "%kernel.project_dir%/public/images/bruitPDF"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    profilImage:
+      uri_prefix: /images/profilImage
+      upload_destination: "%kernel.project_dir%/public/images/profilImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    cvPDF:
+      uri_prefix: /images/cvPDF
+      upload_destination: "%kernel.project_dir%/public/images/cvPDF"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    voixMP3:
+      uri_prefix: /images/voixMP3
+      upload_destination: "%kernel.project_dir%/public/images/voixMP3"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    realisationImage:
+      uri_prefix: /images/realisationImage
+      upload_destination: "%kernel.project_dir%/public/images/realisationImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    drapeauImage:
+      uri_prefix: /images/drapeauImage
+      upload_destination: "%kernel.project_dir%/public/images/drapeauImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    atelierImage:
+      uri_prefix: /images/atelierImage
+      upload_destination: "%kernel.project_dir%/public/images/atelierImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    atelierPDF:
+      uri_prefix: /images/atelierPDF
+      upload_destination: "%kernel.project_dir%/public/images/atelierPDF"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    formationImage:
+      uri_prefix: /images/formationImage
+      upload_destination: "%kernel.project_dir%/public/images/formationImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    formationPDF:
+      uri_prefix: /images/formationPDF
+      upload_destination: "%kernel.project_dir%/public/images/formationPDF"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    stageImage:
+      uri_prefix: /images/stageImage
+      upload_destination: "%kernel.project_dir%/public/images/stageImage"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+    stagePDF:
+      uri_prefix: /images/stagePDF
+      upload_destination: "%kernel.project_dir%/public/images/stagePDF"
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

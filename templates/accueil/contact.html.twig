@@ -1,0 +1,110 @@
+<style>
+    .alert-email{
+        display: none;
+        padding: 20px 20px;
+        position: fixed;
+        top: 100px;
+        right: 100px;
+        background-color: #2fbb7c;
+        border-radius: 20px;
+    }
+
+    .alert-btn-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 20px;
+    }
+
+    .alert-btn-close svg  {
+        height: 100%;
+        fill: white;
+    }
+</style>
+
+<section class="gradient-background column aic gap20">
+    <div class="title">
+        <h2>Une question&nbsp?</h2>
+    </div>
+
+    <div class="dual-grid gap40">
+        <div class="column aic gap20">
+            <div class="row sb w100">
+                <h4>FAQ</h4>
+            </div>
+
+            {% if questions is defined %}
+            {% for question in questions %}
+                <div class="faq">
+                    <div class="question row sb">
+                        <p>{{ question.question }}</p>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                    </div>
+                    <div class="reponse">
+                        <p>{{ question.reponse }}</p>
+
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% if form is defined %}
+        <div class="contact-form">
+            {{ form_start(form) }}
+
+            <div class="column gap20">
+                <div class="column aic">
+                    <h4>Envoyez nous un message :</h4>
+                </div>
+                <div class="column form-item">
+                    {{ form_label(form.nom, 'Nom : ') }}
+                    {{ form_widget(form.nom) }}
+                    {{ form_errors(form.nom) }}
+                </div>
+                <div class="column form-item">
+                    {{ form_label(form.email, 'Email : ') }}
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="column form-item">
+                    {{ form_label(form.objet, 'Objet : ') }}
+                    {{ form_widget(form.objet) }}
+                    {{ form_errors(form.objet) }}
+                </div>
+                <div class="column form-item">
+                    {{ form_label(form.message, 'Message : ') }}
+                    {{ form_widget(form.message) }}
+                    {{ form_errors(form.message) }}
+                </div>
+
+                <div class="row jcc">
+                    <button class="cta">Envoyer
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                    </button>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+
+
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% block javascripts %}
+    {% if sended is defined %}
+    <script >
+        const displayAlert = {{ sended ? 'true' : 'false' }};
+        const alert = document.getElementById('alert-contact');
+        const closeBtn = document.getElementById('alert-btn-close')
+        if(displayAlert){
+            alert.style.display = 'block';
+        }
+
+        closeBtn.addEventListener("click", () => {
+            alert.style.display = 'none';
+        })
+    </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,256 @@
+    <style>
+        .hero {
+            height: calc(100vh - 84px);
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            /*background: linear-gradient(to left, rgba(0, 0, 0, 0.24), rgba(2, 2, 28, 0.7));*/
+            background-color: rgba(1, 4, 23, 0.6);
+            width: 100%;
+            height: 100%;
+            transition: background-color 1s ease;
+        }
+
+        .hero-overlay canvas {
+            opacity: 0;
+            transition: 0.3s ease;
+            z-index: 1;
+        }
+
+        .hero-overlay:hover canvas {
+            opacity: 1;
+        }
+
+
+        .hero-content{
+            height: 100%;
+            max-width: 500px;
+            width: 100%;
+            gap: 30px;
+            /* z-index: 9999; */
+        }
+
+        .hero-content p,
+        .hero-content h1 {
+            color: white;
+            text-align: inherit;
+        }
+
+        .hero-btn
+        {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .transparent-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: var(--font-size-md);
+            border: 2px solid white;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .transparent-btn:hover {
+            background-color: rgba(255, 255, 255, 0.42);
+        }
+
+        .double-hero {
+            height: calc(100vh - 84px);
+            position: relative;
+            background-color: black;
+        }
+
+        .half-hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+
+        .left-hero {
+            background: url("/img/backgrounds/action.jpg") right center no-repeat;
+            background-size: cover;
+            clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
+            transition: 0.3s ease;
+        }
+
+        .right-hero {
+            background: url("/img/backgrounds/stages.jpg") center no-repeat;
+            background-size: cover;
+            clip-path: polygon(55% 0%, 100% 0%, 100% 100%, 45% 100%);
+            transition: 0.3s ease;
+        }
+
+
+        .left-hero:hover {
+            clip-path: polygon(0 0, 70% 0, 65% 100%, 0 100%);
+        }
+
+        .hero p,
+        .hero h1,
+        .hero button{
+            transition: 0.3s ease;
+        }
+
+        .hero:hover p,
+        .hero:hover h1 {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        .hero:hover button{
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .right-hero:hover {
+            clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 35% 100%);
+        }
+
+        .left-hero:hover + .right-hero {
+            clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 65% 100%);
+        }
+        .right-hero:hover + .left-hero {
+            clip-path: polygon(0 0, 40% 0, 35% 100%, 0 100%);
+        }
+
+        .left-hero:hover .hero-overlay {
+            background-color: rgba(29, 33, 59, 0.4);
+        }
+        .right-hero:hover .hero-overlay {
+            background-color: rgba(44, 46, 61, 0.3);
+        }
+
+        .left-hero-content {
+            padding-left: var(--padding-w);
+        }
+        .right-hero-content {
+            padding-right: var(--padding-w);
+            align-items: flex-end;
+        }
+        .right-hero-content p,
+        .right-hero-content h1
+        {
+            text-align: right;
+        }
+
+        .hero-content {
+            padding-left: var(--padding-w);
+        }
+
+        .double-hero:hover p,
+        .double-hero:hover h1{
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .hero-overlay:hover .hero-btn,
+        .hero-overlay:hover p,
+        .hero-overlay:hover h1{
+            opacity: 1;
+        }
+
+
+        .right-hero:hover + .left-hero p {
+            background-color: black;
+        }
+
+        .mono-hero {
+            display: none;
+            transition: 0.3s ease;
+            flex-direction: column;
+            background: url("/img/backgrounds/action.jpg") right center no-repeat;
+            background-size: cover;
+        }
+
+
+
+        @media screen and (max-width: 1000px) {
+            .double-hero { display: none; }
+
+            .mono-hero { display: flex; }
+
+            .hero-content { max-width: unset; }
+
+            .hero-btn { opacity: 1; }
+
+            .hero {
+                height: unset;
+                min-height: unset;
+            }
+
+            .hero-overlay {
+                padding: 80px 0;
+            }
+        }
+
+    </style>
+
+
+    <div class="double-hero column aic">
+        <div class="hero half-hero left-hero">
+            <div class="hero-overlay left-overlay column aifs"> <!--id="particles-js-1"-->
+                <div class="left-hero-content hero-content column jcc">
+                    <p>SERVICES POUR LES PROFESSIONNELS</p>
+                    <h1>Coolisses Professionnel</h1>
+                    <div class="hero-btn">
+                        <a href="{{ path('app_coolisses_production') }}">
+                            <button class="transparent-btn">NOUS DÉCOUVRIR</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero half-hero right-hero">
+            <div class="hero-overlay right-overlay column aife"> <!--id="particles-js-2"-->
+                <div class="right-hero-content hero-content column jcc">
+                    <p>PÔLE D'ÉDUCATION A L'IMAGE ET AU SON</p>
+                    <h1>Coolisses Éducation</h1>
+                    <div class="hero-btn">
+                        <a href="{{ path('app_coolisses_education') }}">
+                            <button class="transparent-btn">NOUS DÉCOUVRIR</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mouse-div" style="pointer-events: none;">
+            <div>
+                <div class="mouse column">
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div>
+                <p style="opacity: 1; font-weight: lighter" class="white">Faites défiler</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero mono-hero">
+        <div class="hero-overlay right-overlay column aife">
+
+            <div class="hero-content column jcc">
+                <p>ASSOCIATION DES PROFESSIONNELS DE L'AUDIOVISUEL</p>
+                <h1>Bienvenue sur le site de Coolisses</h1>
+                <div class="hero-btn">
+                    <a href="{{ path('app_coolisses_production') }}">
+                        <button class="transparent-btn">COOLISSES PROFESSIONNELS</button>
+                    </a>
+                    <a href="{{ path('app_coolisses_education') }}">
+                        <button class="transparent-btn">COOLISSES EDUCATION</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="/js/particles/particles.js"></script>
+        <script src="/js/particles-app.js"></script>
+    {% endblock %}
+

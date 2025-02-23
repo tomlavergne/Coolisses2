@@ -1,20 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block meta_tags %}
+    <meta name="description" content="Page d'accueil du site de Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Bienvenue sur le site de l'association Coolisses!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/tomla/Documents/dev/coolisses2/src/Controller/AccueilController.php</code></li>
-        <li>Your template at <code>C:/Users/tomla/Documents/dev/coolisses2/templates/accueil/index.html.twig</code></li>
-    </ul>
-</div>
+    </style>
+    {% include 'accueil/dialogbox.html.twig' %}
+    {% include 'accueil/hero.html.twig' %}
+    {% include 'accueil/quisommesnous.html.twig' %}
+    {% include 'accueil/services.html.twig' %}
+    {% include 'accueil/actualite.html.twig' %}
+    {% include 'accueil/partenaires.html.twig' %}
+    {% include 'accueil/contact.html.twig' %}
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const showVideoButton = document.getElementById('show-video-btn');
+            const video = document.getElementById('video');
+
+            let showVideo = false
+
+            showVideoButton.addEventListener('click', () => {
+                showVideoButton.style.display='none'
+                showVideo = true
+                video.style.display='flex'
+            })
+
+        });
+
+    </script>
+
+
+
+
 {% endblock %}
