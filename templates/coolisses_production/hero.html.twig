@@ -1,0 +1,182 @@
+<style>
+    .production-hero {
+        padding: 0;
+        height: calc(100vh - 80px);
+        position: relative;
+    }
+
+    .carousel {
+        overflow: hidden;
+        width: 100%;
+        height:100%;
+        position: relative;
+        background-color: black;
+    }
+
+    .carousel-track {
+        display: flex;
+        height: 50%;
+        width: fit-content;
+    }
+
+    .carousel-track:hover {
+        animation-play-state: paused!important;
+    }
+
+    .carousel-item {
+        height: 100%;
+        width: 200px;
+        flex: 0 0 auto;
+        transition: 0.3s ease;
+    }
+
+    @keyframes scrollTopRow {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(calc(-100% + 100vw));
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes scrollBottomRow {
+        0% {
+            transform: translateX(calc(-100% + 100vw));
+        }
+        50% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% + 100vw));
+        }
+    }
+
+    .profil-img {
+        height: 300px;
+        width: 250px;
+        object-fit: cover;
+    }
+
+    .carousel-item-overlay {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 4, 21, 0.6);
+        transition: 0.3s ease;
+    }
+
+    .carousel-overlay {
+        position: absolute;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .transparent-btn {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: var(--font-size-md);
+        border: 2px solid white;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease-in-out;
+    }
+    .transparent-btn:hover {
+        background-color: rgba(255, 255, 255, 0.42);
+    }
+
+    p, h1 {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    button {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    .track1 {   animation: scrollTopRow 60s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite; }
+
+    .track2 {   animation: scrollBottomRow 60s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;  }
+
+    @media screen and (max-height: 600px) {
+        .track1 { height: 100% }
+        .track2 {   display: none  }
+    }
+    @media screen and (max-height: 550px) {
+        .production-hero {
+            height: calc(550px - 80px);
+        }
+    }
+
+</style>
+
+
+<section id="coolisses" class="production-hero hero column aic">
+    <div class="carousel">
+        <div class="carousel-track track1">
+            {% for profil in profils1 %}
+                    <div class="carousel-item" style='background: url("{{ vich_uploader_asset(profil, 'imageFile') }}") top center no-repeat; background-size: cover'>
+                    <div class="carousel-item-overlay">
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="carousel-track track2">
+            {% for profil in profils2 %}
+                <div class="carousel-item" style='background: url("{{ vich_uploader_asset(profil, 'imageFile') }}") top center no-repeat; background-size: cover'>
+                    <div class="carousel-item-overlay">
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="carousel-overlay h100 column aic jcc gap40">
+            <div class="column aic jcc gap40">
+                <div class="column aic jcc gap5">
+                    <p class="tac white">COMÉDIENS - FIGURANTS - VOIX OFF - TECHNICIENS </p>
+                    <h1 class="tac white">Coolisses Professionnel</h1>
+                </div>
+                <div class="hero-btn">
+                    <a href="{{ path('app_miseenrelation') }}">
+                        <button class="transparent-btn">DÉCOUVRIR NOS TALENTS</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="mouse-div">
+        <div>
+            <div class="mouse column">
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div>
+            <p class="white">Faites défiler</p>
+        </div>
+    </div>
+
+
+</section>
+
+<script>
+    let elements = document.querySelectorAll('.carousel-item-overlay');
+
+    function animerElements(elements) {
+        let delay = 0;
+        elements.forEach(function(element) {
+            setTimeout(function() {
+                element.style.opacity = '0.7';
+                setTimeout(function() {
+                    element.style.opacity = '1';
+                }, 500);
+            }, delay);
+            delay += 500;
+        });
+    }
+
+    animerElements(elements);
+</script>

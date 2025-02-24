@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="ateliers proposés par Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, services, ateliers, formations, stages, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Nos ateliers{% endblock %}
+
+{% block body %}
+    <style>
+
+    .programmation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 1200px) {
+        .programmation-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .programmation-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+    <section class="column gap80">
+        <div class="column aic gap20">
+            <h1 class="little-title tac">Nos ateliers</h1>
+            <p class="big-text  ">
+                Venez explorer le monde du cinéma à travers nos ateliers d'une ou deux heures organisés plusieurs fois par
+                mois&nbsp!
+                Rejoignez-nous en petit groupe pour découvrir diverses thématiques telles que l'art de l'écriture de
+                scénario, la maîtrise de la prise de son et d'image, ainsi que l'acting, le montage vidéo et le sound-design.
+            </p>
+        </div>
+        {% if ateliers %}
+            <div class="programmation-grid gap40">
+                {% for atelier in ateliers %}
+                    <a class="card" {% if atelier.PDFName %}href="{{ asset('/images/atelierPDF/' ~ atelier.PDFName) }}" target="_blank" {% endif %}>
+                        <img src="{{ vich_uploader_asset(atelier, 'imageFile') }}" alt="">
+                        <div class="content column gap10">
+                            <p>{{ atelier.date }}</p>
+                            <h4 class="card-title">{{ atelier.titre }}</h4>
+                            <p>{{ atelier.description }}</p>
+                            <p>Avec : {{ atelier.animateur }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="column aic">
+                <p>Aucun atelier n'a été enregistré pour le moment.</p>
+            </div>
+        {% endif %}
+    </section>
+
+
+{% endblock %}

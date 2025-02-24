@@ -1,0 +1,445 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Trouvez des professionnels de l'audiovisuel et du cinema en Charente Maritime grâce à Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, services, professionnels, base de données, mise en relation, location, materiel, camera, ateliers, formations, stages, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Mise en relation{% endblock %}
+
+{% block body %}
+    <style>
+
+        .profil-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1400px) {
+            .profil-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 1100px) {
+            .profil-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 800px) {
+            .profil-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .profil-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profil-div {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 10%);
+            transition: box-shadow 0.3s ease, transform 0.3s ease-in-out;
+        }
+        .profil-div:hover {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 30%);
+            transform: scale(1.05);
+        }
+
+        .profil-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 15px 15px 15px;
+        }
+        .profil-content p {
+            font-size: var(--font-size-sm);
+        }
+
+        .profil-overlay {
+            opacity: 0;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            pointer-events: none;
+            backdrop-filter: blur(0px);
+        }
+        .profil-div:hover .profil-info {
+            opacity: 1;
+            backdrop-filter: blur(5px);
+        }
+
+        .profil-info {
+            opacity: 0;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+        }
+        .profil-div:hover .profil-info {
+            opacity: 1;
+        }
+
+        .profil-div-overlay {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+
+        .profil-overlay p {
+            text-align: center;
+            font-size: var(--font-size-md);
+        }
+
+        .profil-overlay svg {
+            width: 20%;
+            fill: white;
+        }
+
+        .drapeau {
+            height: 20px;
+            border-radius: 2px;
+        }
+
+        .filter-open-btn {
+            z-index: 9999;
+            position: fixed;
+            height: 60px;
+            width: 60px;
+            border-radius: 100px;
+            background-color: var(--dark-blue);
+            bottom: 20px;
+            right: 20px;
+            transition: 0.3s ease;
+        }
+        .filter-open-btn:hover {
+            background-color: var(--very-dark-blue);
+        }
+
+        .popup-filter-overlay{
+            padding: 5%;
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 9995;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup-filter{
+            width: 100%;
+            max-height: 100%;
+            overflow-y: scroll;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            border: 1px solid var(--background-color3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .sliders-icon {
+            fill: white;
+            height: 30px;
+            width: 30px;
+        }
+
+        .form-item{
+            width: 100%;
+        }
+        .full-input {
+            padding: 5px 10px;
+        }
+        .form-error-message {
+            color: red;
+            /* Autres styles CSS */
+        }
+        .result-section {
+            width: 100%;
+            padding: 40px 40px ;
+            margin-bottom: 100px;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .playBtn {
+            border: 1px solid var(--text-light);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            align-items: center;
+            padding: 5px;
+            transition: 0.3s ease;
+        }
+        .playBtn:hover {
+            transform: scale(1.1);
+            background-color: var(--background-color2);
+            color: var(--text-light);
+        }
+
+        .playIcon {
+            height: 16px;
+            width: 16px;
+            transition: 0.3s ease;
+        }
+        .playIcon {
+            transform: scale(1.1);
+        }
+
+        .lang-row {
+            position: absolute;
+            width: fit-content;
+            right: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px;
+            gap: 5px;
+            border-radius: 0 0 0 5px;
+        }
+
+        .overflow-text {
+            text-align: center;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+
+    <section>
+        <div class="title column gap20">
+            <h1 class="little-title">Retrouvez ici les comédiens, figurants et techniciens du département Charente-Maritime</h1>
+            <p>
+                Grâce à notre base de données de professionnels, Coolisses simplifie la mise en contact des porteurs
+                de projets, des professionnels et des passionnés de Charente-Maritime.
+                Contactez-nous si vous souhaitez obtenir les coordonnées d'un de nos membres, ou si vous souhaitez
+                vous inscrire dans notre base de données.
+            </p>
+            <div class="btn-row">
+                <a href="{{ path('app_adherer') }}" class="cta">Adhérer
+                    <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                </a>
+                <a href="{{ path('app_contact') }}">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+    <div id="popup-filter-overlay" class="popup-filter-overlay column aic jcc">
+        <div id="popup-filter" class="popup-filter">
+            {{ form_start(form) }}
+            <div class="column gap20">
+                <div class="column aic">
+                    <h3>Filtre</h3>
+                </div>
+                <div class="column gap10">
+                    <div class="column form-item gap5">
+                        {{ form_label(form.metier, 'Type de profil : ') }}
+                        {{ form_widget(form.metier) }}
+                        {{ form_errors(form.metier) }}
+                    </div>
+                    <div class="column form-item gap5">
+                        {{ form_label(form.experience, 'Experience : ') }}
+                        {{ form_widget(form.experience) }}
+                        {{ form_errors(form.experience) }}
+                    </div>
+                    <div class="column form-item gap5">
+                        {{ form_label(form.langue, 'Langue : ') }}
+                        {{ form_widget(form.langue) }}
+                        {{ form_errors(form.langue) }}
+                    </div>
+                    <div class="column form-item gap5">
+                        {{ form_label(form.genre, 'Genre : ') }}
+                        {{ form_widget(form.genre) }}
+                        {{ form_errors(form.genre) }}
+                    </div>
+                    <div class="column form-item gap5">
+                        {{ form_label(form.agemin, 'Age min : ') }}
+                        {{ form_widget(form.agemin) }}
+                        {{ form_errors(form.agemin) }}
+                    </div>
+                    <div class="column form-item gap5">
+                        {{ form_label(form.agemax, 'Age max : ') }}
+                        {{ form_widget(form.agemax) }}
+                        {{ form_errors(form.agemax) }}
+                    </div>
+
+                </div>
+                <div class="row jcc">
+                    <button type="submit" class="cta">Rechercher
+                        <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                    </button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+        <div class="result-section column aic gap20">
+            {% if profils is not empty %}
+                <div class="profil-grid gap20">
+                    {% for profil in profils %}
+                        <div class="profil-div" style='background: url("{{ vich_uploader_asset(profil, 'imageFile') }}") top center no-repeat; background-size: cover'>
+                            <div class="profil-div-overlay">
+                                <div class="profil-content column aic jcc gap5">
+                                    <h5 class="profil-name white tac">{{ profil.prenom }} {{ profil.nom }}</h5>
+                                    <p class="overflow-text white">
+                                        {% for metier in profil.metier %}{{ metier.nom }}{% if not loop.last %}<span>, </span>{% endif %}{% endfor %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="profil-info aic sb gap20">
+                                <div class="column gap10 aic">
+                                    <h4 class="profil-name white tac    ">{{ profil.prenom }} {{ profil.nom }}</h4>
+                                    <p class="white" style="text-align: center">
+                                        {% for metier in profil.metier %}{{ metier.nom }}{% if not loop.last %}<span>, </span>{% endif %}{% endfor %}
+                                    </p>
+                                </div>
+
+                                <div class="column gap10 aic w100">
+                                    <p class="white">Age : {{ now|date('Y') - profil.dateNaissance|date('Y') }}</p>
+                                    <p class="white">Taille : {{ profil.tailleEnCentimetre }} cm</p>
+                                    <p class="white">Localisation : {{ profil.localisation }}</p>
+                                    {% if profil.langues is not empty %}
+                                        <p class="white" style="text-align: center">
+                                            Langue :
+                                            {% for langue in profil.langues %}
+                                                {{ langue.nom }}
+                                                {% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                                {% if profil.MP3Name is not null %}
+                                    <div class="row aic jcc gap10 w100">
+                                        <audio class="custom-audio">
+                                            <source src="{{ asset('/images/voixMP3/' ~ profil.MP3Name) }}" type="audio/mpeg">
+                                            Votre navigateur ne supporte pas l'élément audio.
+                                        </audio>
+                                    </div>
+                                {% endif %}
+                                {% if profil.PDFName is not null%}
+                                    <a href="{{ asset('/images/cvPDF/' ~ profil.PDFName) }}" target="_blank" class="white">Voir le CV</a>
+                                {% endif %}
+                                <a href="{{ path('app_contact') }}" target="_blank" class="cta">Prendre contact
+                                    <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Aucun profil ne correspond à ces critères</p>
+            {% endif %}
+        </div>
+
+
+
+    <div id="filter-trigger-btn" class="filter-open-btn column aic jcc">
+        <svg class="sliders-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
+    </div>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let filterTriggerBtn = document.getElementById('filter-trigger-btn')
+            let filterOverlay = document.getElementById('popup-filter-overlay')
+
+            let showFilter = false
+            filterTriggerBtn.addEventListener('click', () => {
+                showFilter = !showFilter
+                filterTriggerBtn.style.backgroundColor = 'var("--very-dark-blue")'
+                if(showFilter){
+                    filterOverlay.style.display = 'flex'
+                } else {
+                    filterOverlay.style.display = 'none'
+                }
+            })
+
+            let audios = document.querySelectorAll(".custom-audio");
+            audios.forEach(function(audio) {
+                let button = document.createElement('a');
+                button.textContent = 'Extrait voix'
+
+                let playIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                playIcon.setAttribute("viewBox", "0 0 384 512");
+                let playPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                playPath.setAttribute("d", "M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z");
+                playPath.setAttribute("fill", 'black');
+                playIcon.classList.add('icon', 'playIcon')
+                playIcon.appendChild(playPath);
+
+                let pauseIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                pauseIcon.setAttribute("viewBox", "0 0 384 512");
+                let pausePath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                pausePath.setAttribute("d", "M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z");
+                pausePath.setAttribute("fill", 'black');
+                pauseIcon.classList.add('icon', 'playIcon')
+                pauseIcon.appendChild(pausePath);
+
+                button.classList.add('playBtn')
+                button.appendChild(playIcon)
+                button.onclick = function() {
+                    if (audio.paused) {
+                        audio.play();
+                        while (button.firstChild) {
+                            button.removeChild(button.firstChild);
+                        }
+                        button.textContent = 'Extrait voix'
+                        button.appendChild(pauseIcon)
+                    } else {
+                        audio.pause();
+                        while (button.firstChild) {
+                            button.removeChild(button.firstChild);
+                        }
+                        button.textContent = 'Extrait voix'
+                        button.appendChild(playIcon)
+                    }
+                };
+                audio.parentNode.insertBefore(button, audio.nextSibling);
+
+                audio.addEventListener("ended", function() {
+                    // L'audio est terminé, revenez au début
+                    audio.currentTime = 0; // Réglez la position de lecture au début
+                    audio.pause();
+                    while (button.firstChild) {
+                        button.removeChild(button.firstChild);
+                    }
+                    button.textContent = 'Extrait voix'
+                    button.appendChild(playIcon)
+                })
+            })
+
+        })
+
+        // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
+
+    </script>
+
+{% endblock %}

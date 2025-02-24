@@ -64,11 +64,7 @@
     {% if actualites is defined %}
         <div class="actualites-grid">
             {% for actualite in actualites %}
-                <a class="actualite " href="/actualite/{{ actualite.id }}" style='background: url("{{ vich_uploader_asset(actualite, 'imageFile') }}");'>
-                    <div class="actualite-overlay column aic jce">
-                        <h3 class="actualite-title">{{ actualite.titre }}</h3>
-                    </div>
-                </a>
+                {% include 'actualite/actualiteCard.html.twig' with {'actualite': actualite} %}
             {% endfor %}
         </div> 
     {% endif %}

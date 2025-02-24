@@ -1,0 +1,118 @@
+<style>
+
+    .formations {
+        background-color: var(--background-color2);
+    }
+
+    .formation-grid {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 100px 20px
+    }
+
+    @media screen and (max-width: 1000px) {
+        .formation-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .formation-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    .service {
+        height: 200px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 10%);
+        padding: 20px;
+        color: var(--text-dark);
+        transition: 0.3s ease!important;
+        background-size: 100%!important;
+        background-position: center!important;
+        background-repeat: no-repeat!important;
+    }
+    .service:hover {
+        color: var(--text-dark);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 30%);
+        background-size: 105%!important;
+    }
+
+    .service-content {
+        background-color: white;
+        padding: 20px;
+        transform: translateY(100px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 10%);
+        z-index: 10;
+    }
+    .service-content p{
+        text-align: left;
+    }
+
+    .service-icon {
+        fill: var(--text-light);
+    }
+
+    #production-service1 { background: url("/img/backgrounds/formations.jpg");}
+    #production-service2 { background: url("/img/backgrounds/groupe.jpg");}
+    #production-service3 { background: url("/img/backgrounds/croquis.jpg");}
+    #production-service4 { background: url("/img/backgrounds/scolaire.jpg");}
+
+</style>
+
+<section id="formations" class="formations">
+    <div class="title column aic gap20">
+        <h2>Nos formations</h2>
+        <p>
+            Plongez dans l'univers captivant de la réalisation cinématographique avec nos formations, stages
+            et autres interventions.
+        </p>
+
+    </div>
+
+    <div class="formation-grid">
+        <a id="production-service1" class="service" href="/formations">
+            <div class="service-content column gap10">
+                <div class="row aic gap10">
+                    <h4>Formations pro</h4>
+                </div>
+                <p>Découvrez nos formations à destination des professionnels de l'audiovisuel.</p>
+            </div>
+        </a>
+
+        <a id="production-service2" class="service" href="{{ path('app_stages') }}">
+            <div class="service-content column gap10">
+                <div class="row aic gap10">
+                    <h4>Stages de découverte</h4>
+                </div>
+                <p>Plongez dans l'univers fascinant du cinéma grâce à nos stages de découverte, ouverts à tous&nbsp!</p>
+            </div>
+        </a>
+        <a id="production-service3" class="service" href="{{ path('app_locations') }}">
+            <div class="service-content column gap10">
+                <div class="row aic gap10">
+                    <h4>Ateliers</h4>
+                </div>
+                <p>Rejoignez-nous le temps d'un atelier pour découvrir comment créer votre propre film&nbsp!</p>
+            </div>
+        </a>
+
+        <a id="production-service4" class="service" href="{{ path('app_locations') }}">
+            <div class="service-content column gap10">
+                <div class="row aic gap10">
+                    <h4>Interventions en milieu scolaire et universitaire</h4>
+                </div>
+                <p>
+                    Nous intervenons dans les écoles, les collèges, les lycées et les universités pour initier
+                    les jeunes aux métiers du cinéma.
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+</section>
+
+

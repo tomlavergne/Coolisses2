@@ -3,27 +3,7 @@
         top: 0;
         left: 0;
         position: sticky;
-        background-color: var(--background-color2);
         width: 100%;
-        z-index: 900;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 20%);
-    }
-
-    .header-logo {
-        height: 60px;
-        width: auto;
-    }
-
-    .header-content {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        padding: 10px var(--padding-w);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .header-content:last-child {
-        justify-self: end;
     }
 
     #tablet-header {
@@ -243,8 +223,8 @@
 {% if app.user %}
     <div class="admin-nav-div column aic jcc">
         <nav class="admin-nav row gap20 sb aic">
-            {# <a href="{{ path('app_admin') }}">Espace Administrateur</a>
-            <a href="{{ path('app_logout') }}">Déconnexion</a> #}
+            <a href="{{ path('app_admin') }}">Espace Administrateur</a>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
         </nav>
     </div>
 {% endif %}
@@ -263,18 +243,18 @@
     </div>
 {% endif %}
 
-<header id="computer-header" class="">
-    <nav class="header-content">
-        <div class="row aic gap20">
-            <a class="header-logo-link" href="/">
-                <img class="header-logo" src="{{ asset('img/logo.png') }}" alt="">
-            </a>
-            <div>
-                <a href="/">Accueil</a>
-            </div>
+<header id="computer-header" class="p-4 bg-white flex justify-between">
+    <div class="flex items-center gap-4">
+        <a href="/">
+            <div class="bg-black h-8 w-24"></div>
+            {# <img class="header-logo" src="{{ asset('img/logo.png') }}" alt=""> #}
+        </a>
+        <nav class="flex items-center gap-4">
+            <a href="/">Accueil</a>
             <div class="menu-item">
-                <a class="row aic gap5 dropdown-trigger-a" href="/services">Nos services
-                    <svg class="icon dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                <a class="flex items-center gap-2" href="/services">
+                    <span>Nos services</span>
+                    <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                 </a>
                 <div class="dropdown menu-item-dropdown gap10">
                     <a href="/formations">Formation professionnelle</a>
@@ -284,35 +264,25 @@
                 </div>
             </div>
             <div class="menu-item">
-                <a class="row aic gap5 dropdown-trigger-a" href="{{ path('app_realisations') }}">Nos réalisations
-                    <svg class="icon dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                <a class="flex items-center gap-2" href="{{ path('app_realisations') }}">
+                    <span>Nos réalisations</span>
+                    <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                 </a>
                 <div class="dropdown menu-item-dropdown gap10">
                     <a href="/realisations">Toutes les réalisations</a>
                     <a href="{{ path('app_archive') }}">Archives</a>
                 </div>
             </div>
+                
+            <a href="{{ path('app_actualites') }}">Actualité</a>
+        </nav>
+        
+    </div>
 
-            <div class="menu-item">
-                <a href="{{ path('app_actualites') }}">Actualité</a>
-            </div>
-
-        </div>
-
-        <div class="row aic jce gap20">
-            <div class="menu-item">
-                <a href="{{ path('app_contact') }}">Nous contacter</a>
-            </div>
-            <div class="menu-item">
-                <a href="{{ path('app_adherer') }}" class="cta">Adhérer
-                    <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-                </a>
-            </div>
-
-        </div>
-    </nav>
-
-
+    <div class="flex items-center gap-4">
+        <a href="{{ path('app_contact') }}">Nous contacter</a>
+        <a href="{{ path('app_adherer') }}" class="rounded-full w-fit bg-black text-white px-4 py-2">Adhérer</a>
+    </div>
 </header>
 
 

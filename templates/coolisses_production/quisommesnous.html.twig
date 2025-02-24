@@ -1,0 +1,35 @@
+<style>
+
+    .side-img {
+        height: 100%;
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        filter: grayscale(10%);
+    }
+</style>
+
+<section id="quisommesnous">
+    <div class="dual-grid gap40">
+        <div class="column gap20 jcc">
+            <div>
+                <h2>Qui sommes-nous&nbsp?</h2>
+            </div>
+            <h4 class=" big-text">
+                Coolisses Production est un facilitateur pour les productions audiovisuelles qui souhaitent s'installer
+                sur Le Bassin Rochelais.
+                Nous vous proposons une gamme complète de services pour simplifier votre processus de création.
+            </h4>
+            <div class="btn-row">
+                <a href="{{ path('app_adherer') }}" class="cta">Adhérer
+                    <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                </a>
+                <a href="{{ path('app_contact') }}">Nous contacter</a>
+            </div>
+
+        </div>
+        <div class="column aic jcc">
+            <img class="side-img" src="/img/backgrounds/beaumarchais.jpg">
+        </div>
+    </div>
+</section>

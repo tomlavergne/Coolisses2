@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Découvrez Bruits de Coolisses, la revue trimestrielle de Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, services, professionnels, bruits de coolisses, revue, magazine, base de données, mise en relation, location, materiel, camera, ateliers, formations, stages, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Bruits de Coolisses{% endblock %}
+
+{% block body %}
+    <style>
+        .bruit-catalogue {
+            background: linear-gradient(var(--background-color2), white);
+        }
+
+        .bruit-grid {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .bruit-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 900px) {
+            .bruit-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .bruit-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 350px) {
+            .bruit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bruit-div {
+            background-color: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 10%);
+            transition: box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        .bruit-div:hover {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 30%);
+        }
+
+        .bruit-content {
+            padding: 20px;
+        }
+
+        .bruit-img {
+            width: 100%;
+            aspect-ratio: 21/29.7;
+            object-fit: cover;
+        }
+
+        .bruit-overlay {
+            opacity: 0;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            pointer-events: none;
+            backdrop-filter: blur(0px);
+        }
+        .bruit-div:hover .bruit-overlay {
+            opacity: 1;
+            backdrop-filter: blur(5px);
+        }
+
+        .bruit-overlay p {
+            text-align: center;
+            font-size: var(--font-size-md);
+        }
+
+        .bruit-overlay svg {
+            width: 20%;
+            fill: white;
+        }
+
+    </style>
+
+
+    <section class="column gap80">
+        <div class="column aic gap20">
+            <h1 class="little-title tac">Bruits de Coolisses</h1>
+            <p class="big-text">
+                Bruits de Coolisses est la revue trimestrielle de l'association.
+                Vous pouvez les lire directement en cliquant sur l'une d'entre elle ci-dessous.
+            </p>
+        </div>
+
+        <div class="bruit-grid">
+            {% for bruit in bruitsDeCoolisses %}
+                <a class="bruit-div" href="{{ asset('/images/bruitPDF/' ~ bruit.PDFName) }}" target="_blank">
+                    <div>
+                        <img class="bruit-img" src="{{ vich_uploader_asset(bruit, 'imageFile') }}" alt="image">
+                        <div class="bruit-content">
+                            <p class="bruit-title">{{ bruit.titre }}</p>
+                        </div>
+
+                    </div>
+                    <div class="bruit-overlay aic jcc gap20">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 55.2V426c0 12.2 9.9 22 22 22c6.3 0 12.4-2.7 16.6-7.5L121.2 346l58.1 116.3c7.9 15.8 27.1 22.2 42.9 14.3s22.2-27.1 14.3-42.9L179.8 320H297.9c12.2 0 22.1-9.9 22.1-22.1c0-6.3-2.7-12.3-7.4-16.5L38.6 37.9C34.3 34.1 28.9 32 23.2 32C10.4 32 0 42.4 0 55.2z"/></svg>
+                        <p class="white">Accéder à la revue</p>
+                    </div>
+                </a>
+
+            {% endfor %}
+
+
+        </div>
+        <div class="row aic jcc" style="margin-top: 50px">
+            {{ knp_pagination_render(bruitsDeCoolisses) }}
+        </div>
+
+    </section>
+
+
+
+
+
+{% endblock %}

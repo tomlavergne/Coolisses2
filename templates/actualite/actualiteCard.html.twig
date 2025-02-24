@@ -1,0 +1,11 @@
+<a class="relative h-64 flex flex-col gap-2 justify-between p-8 bg-[url({{ vich_uploader_asset(actualite, 'imageFile') }})] hover:brightness-100 group" href="/actualite/{{ actualite.id }}">
+    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    <div class="relative flex gap-2">
+        <span class="text-white border border-white rounded-full px-2 py-1 w-fit leading-none">actualité</span>
+        <span class="text-white border border-white rounded-full px-2 py-1 w-fit leading-none">blog</span>
+    </div>
+    <div class="relative flex flex-col gap-2">
+        <h3 class="line-clamp-2 text-white text-2xl font-medium actualite-title">{{ actualite.titre }}</h3>
+        <span class="text-white">{{ actualite.date|date("d/m/Y") }}</span>
+    </div>
+</a>

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Coolisses production, centre rochelais de ressources audiovisuelles">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, production, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Coolisses Production{% endblock %}
+
+{% block body %}
+
+    {% include 'coolisses_production/hero.html.twig' %}
+
+    {% include 'coolisses_production/quisommesnous.html.twig' %}
+
+    {% include 'coolisses_production/services.html.twig' %}
+
+    {% include 'coolisses_production/realisations.html.twig' %}
+
+{% endblock %}

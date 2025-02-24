@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Adhérez à  Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, adhérer, adhesion, inscrire, inscription">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Adhérer à Coolisses !{% endblock %}
+
+{% block body %}
+    <style>
+        .adhesion-grid {
+            display: grid;
+            grid-template-columns: 5fr 1fr 5fr;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .adhesion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-section {
+            padding: 20px 10px;
+            border: 1px solid #9c9fab;
+            border-radius: 5px;
+        }
+    </style>
+
+    <section>
+        <div class="dual-grid gap80">
+            <div class="column gap20 jcc">
+                <h1 class="little-title">Adhérer</h1>
+                <p class="big-text">
+                    En adhérant à Coolisses, vous profitez d'une meilleure visibilité auprès des sociétés de production
+                    et d'annonces de tournages dans la région, ainsi que de rencontres conviviales et la possibilité
+                    de louer du matériel audiovisuel. Pour vous adhérer, complétez la fiche d'inscription ci-dessous.
+                </p>
+                <p>
+                    L'adhésion coûte 20€ pour les moins de 25 ans et les bénéficiaires de minima sociaux,
+                    et 35€ pour les autres profils.
+                    Elle est valide une année glissante et vous pouvez vous inscrire à tout moment.
+                </p>
+                <div class="btn-row">
+                    <a class="cta" href="{{ asset('fichiers/coolisses_fiche_2023.pdf')}}" target="_blank">Télécharger la fiche d'inscription
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
+                    </a>
+                    <a href="{{ path('app_contact') }}">Nous contacter</a>
+                </div>
+
+            </div>
+            <div class="location-image">
+                <img src="/img/backgrounds/camera.jpg">
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block title %}Connectez-vous{% endblock %}
+
+{% block body %}
+    <style>
+        .login-form {
+            max-width: 400px;
+            border: 1px solid #9c9fab;
+            background-color: var(--background-color2);
+            padding: 20px;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+    <section class="column aic jcc">
+        <div class="title">
+            <h2>Connectez-vous :</h2>
+        </div>
+        <form class="login-form column gap20" method="post">
+
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <label for="username">Adresse e-mail : </label>
+            <input type="email" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus>
+            <label for="password">Mot de passe : </label>
+            <input type="password" name="_password" id="password" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+            #}
+            <div class="column aic jcc">
+                <button class="cta" type="submit">Se connecter</button>
+            </div>
+        </form>
+    </section>
+
+{% endblock %}

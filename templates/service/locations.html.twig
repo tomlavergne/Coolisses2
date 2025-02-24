@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="location de materiel proposés par Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, services, location, materiel, camera, ateliers, formations, stages, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Location de materiel{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="dual-grid gap80">
+            <div class="column gap20 jcc">
+                <h1 class="little-title">Location de matériel professionnel</h1>
+                <p class="big-text">
+                    Afin de permettre à chacun de s’essayer à la réalisation, nous mettons à votre disposition du
+                    matériel de prise de vue et de capture de son. Nous proposons également des loges, des salles
+                    de casting ou de la post-production. La location est réservée aux adhérents de l’association.
+                    Contactez-nous pour toute demande de location de matériel.
+                </p>
+                <div class="btn-row">
+                    <a href="{{ path('app_adherer') }}" class="cta">Adhérer
+                        <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                    </a>
+                    <a href="{{ path('app_contact') }}">Nous contacter</a>
+                </div>
+
+            </div>
+            <div class="location-image">
+                <img src="/img/backgrounds/location.jpg">
+            </div>
+        </div>
+    </section>
+
+    <section class="column aic ">
+        <div class="title">
+            <h2>Nos tarifs</h2>
+        </div>
+        <div class="location-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Tarif/Jour</th>
+                    <th>Tarif/Jour 2-5 Jours</th>
+                    <th>Tarif/Jour +6 Jours</th>
+                    <th>Caution</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.nom }}</td>
+                        <td>
+                            {% if article.tarifJour %}
+                                {{ article.tarifJour }} €
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if article.tarif25Jours %}
+                                {{ article.tarif25Jours }} €
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if article.tarifPlus6Jours %}
+                                {{ article.tarifPlus6Jours }} €
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if article.caution %}
+                                {{ article.caution }} €
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

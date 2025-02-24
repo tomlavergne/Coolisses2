@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Actualité de Coolisses, l'association rochelaise de professionnels du cinéma : {{ actualite.titre }}">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, actualite, news, informations, {{ actualite.titre }}">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}{{ actualite.titre }}{% endblock %}
+
+{% block body %}
+    <style>
+        .actualite-img {
+            width: 100%;
+            max-width: 500px    ;
+        }
+    </style>
+
+    <section>
+        <div class="dual-grid gap40">
+            <div>
+                <div class="title column gap20">
+                    <p>Date de publication : {{ actualite.date|format_datetime('long', 'none') }}</p>
+                    <h2>{{ actualite.titre }}</h2>
+                </div>
+                <p>{{ actualite.texte|raw }}</p>
+            </div>
+            <div>
+                <img class="actualite-img" src="{{ vich_uploader_asset(actualite, 'imageFile') }}" alt="image">
+            </div>
+        </div>
+    </section>
+    <div>
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block title %}Nos réalisations !{% endblock %}
+
+{% block body %}
+    <style>
+        .video {
+            min-height: 350px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .categorie {
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+    </style>
+
+
+    <section class="column aic gap20">
+        <div class="title">
+            <h2>{{ realisation.titre }}</h2>
+        </div>
+
+        <div class="dual-grid gap80">
+            <div class="column gap20">
+                <div class="column gap10">
+                    <h4>Categorie :</h4>
+                    <div class="row gap10">
+                        {% for categorie in realisation.categorie %}
+                            <p class="categorie" style="background-color: {{ categorie.couleur }};">{{ categorie.nom }}</p>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                <div>
+                    <h4>Description :</h4>
+                    <p>{{ realisation.description|raw }}</p>
+                </div>
+                <div>
+                    <h4>Date de sortie :</h4>
+                    <p>{{ realisation.date|date }}</p>
+                </div>
+                <div>
+                    <h4>Auteur(s) :</h4>
+                    <p>{{ realisation.auteur }}</p>
+                </div>
+                <div>
+                    <h4>Durée :</h4>
+                    <p>{{ realisation.duree }} min</p>
+                </div>
+
+            </div>
+            <div>
+                <iframe class="video" src="{{ realisation.lienVideo }}"></iframe>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

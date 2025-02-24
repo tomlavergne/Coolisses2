@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Retrouvez dans cette page toute l'actualité de  Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, actualité, news, informations">
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+    <section class="mx-8 my-24">
+        <div class="flex flex-col items-center gap-4 mb-4">
+            <h1 class="text-5xl font-bold">Actualité</h1>
+            <p class="text-md font-medium">Retrouvez ici toute l'actualité de l'association&nbsp:</p>
+        </div>
+        <div class="grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid p-4 gap-4">
+            {% for actualite in actualites %}
+                {% include 'actualite/actualiteCard.html.twig' with {'actualite': actualite} %}
+            {% endfor %}
+        </div>
+        <div class="row aic jcc" style="margin-top: 50px">
+            {{ knp_pagination_render(actualites) }}
+        </div>
+    </section>
+{% endblock %}

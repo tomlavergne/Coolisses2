@@ -1,0 +1,72 @@
+<style>
+
+    .production-hero {
+        padding: 0;
+        background: url({{ asset('img/backgrounds/stages.jpg') }}) center;
+        height: calc(100vh - 80px);
+        background-size: cover;
+    }
+
+    .production-overlay {
+        padding: 80px 20px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .divider {
+        height: 1px;
+        border-radius: 10px;
+        background-color: white;
+        width: 300px;
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    }
+
+    .separator-y {
+        background-color: white;
+        height: 100%;
+        width: 1px;
+    }
+
+    .raccourcis {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .raccourcis {
+            display: none;
+        }
+    }
+
+</style>
+
+
+<section id="coolisses" class="production-hero">
+    <div class="production-overlay column aic jcc gap40">
+        <div>
+            <p class="tac white">PÔLE D'ÉDUCATION À L'IMAGE ET AU SON</p>
+            <h1 class="tac white">Coolisses Éducation</h1>
+        </div>
+        <div class="raccourcis">
+            <a href="#quisommesnous" class="white">Qui sommes-nous&nbsp?</a>
+            <div class="separator-y"></div>
+            <a href="#formations" class="white">Nos formations & stages</a>
+            <div class="separator-y"></div>
+            <a href="#realisations" class="white">Les réalisations de nos apprentis</a>
+
+        </div>
+    </div>
+    <div class="mouse-div">
+        <div>
+            <div class="mouse column">
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div>
+            <p class="white">Faites défiler</p>
+        </div>
+    </div>
+</section>

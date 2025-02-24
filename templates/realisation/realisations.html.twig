@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block title %}Nos réalisations !{% endblock %}
+
+{% block body %}
+    <style>
+        .realisation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1300px) {
+            .realisation-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .realisation-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .realisation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .categorie {
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: max-content;
+        }
+    </style>
+
+
+    <section class="column aic gap20">
+        <div class="title column aic gap20">
+            <h2 class="tac">{{ titre }}</h2>
+
+            <div class="column gap20">
+
+                <div class="row gap10">
+                    {{ form_start(form) }}
+                    <div class="row aic gap10">
+                        {{ form_label(form.nom, 'Categorie de film : ') }}
+                        {{ form_widget(form.nom) }}
+                        {{ form_errors(form.nom) }}
+
+                        <button type="submit" class="cta">Filtrer
+                            <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
+                        </button>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="realisation-grid">
+            {% for realisation in realisations %}
+                <a class="card" href="/realisation/{{ realisation.id }}">
+                    <img src="{{ vich_uploader_asset(realisation, 'imageFile') }}" alt="image">
+                    <div class="content column gap20">
+                        <div class="column gap10">
+                            <h4>{{ realisation.titre }}</h4>
+                            <p>Par : {{ realisation.auteur }}</p>
+                        </div>
+
+                        <div class="column gap10">
+                            {% for categorie in realisation.categorie %}
+                                <p class="categorie" style="background-color: {{ categorie.couleur }};">{{ categorie.nom }}</p>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="row aic jcc" style="margin-top: 50px">
+            {{ knp_pagination_render(realisations) }}
+        </div>
+
+    </section>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="stages proposés par Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, services, ateliers, formations, stages, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Nos stages{% endblock %}
+
+{% block body %}
+    <style>
+
+    </style>
+
+    <section class="column gap40">
+        <div class="column aic gap20">
+            <h1 class="little-title tac">Nos stages découverte</h1>
+            <p class="big-text">
+                Plongez dans une expérience immersive d'une semaine dans l'univers du cinéma&nbsp!
+                Vous découvrirez le processus complet de la création d'un film,
+                guidé par des professionnels de l'audiovisuel.
+            </p>
+        </div>
+        <div class="dual-grid gap40">
+            {% for stage in stages %}
+                <a class="card" {% if stage.PDFName %} href="{{ asset('/images/stagePDF/' ~ stage.PDFName) }}" target="_blank" {% endif %}>
+                    <img src="{{ vich_uploader_asset(stage, 'imageFile') }}" alt="">
+                    <div class="content column gap10">
+                        <p>Durée : {{ stage.duree }}</p>
+                        <h4 class="card-title">{{ stage.titre }}</h4>
+                        <p>{{ stage.description }}</p>
+                        <p>Avec : {{ stage.intervenants }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

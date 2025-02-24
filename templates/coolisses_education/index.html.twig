@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Coolisses education, pôle d'éducation rochelais à l'image et au son">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, éducation, apprentissage, formation, stages">
+    <meta name="robots" content="index, follow">
+
+    <!--meta og:description -->
+{% endblock %}
+
+{% block title %}Coolisses Education{% endblock %}
+
+{% block body %}
+
+    {% include 'coolisses_education/hero.html.twig' %}
+    {% include 'coolisses_education/quisommesnous.html.twig' %}
+    {% include 'coolisses_education/formations.html.twig' %}
+    {% include 'coolisses_education/realisations.html.twig' %}
+{% endblock %}
