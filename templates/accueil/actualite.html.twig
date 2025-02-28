@@ -1,82 +1,22 @@
 <style>
-    .actualites {
-        padding: 100px 0;
-    }
-
-    .actualites-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr ;
-        width: 100%;
-    }
-
-    @media screen and (max-width: 1000px) {
-        .actualites-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
-    @media screen and (max-width: 500px) {
-        .actualites-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .actualite {
-        box-shadow: 0 0 40px rgba(0, 0, 0, 10%);
-        height: 300px;
-        width: 100%;
-        background-size: cover!important;
-        background-position: center!important;
-        background-repeat: no-repeat!important;
-    }
-
-    .actualite-title {
-        color: white;
-    }
-
-    .actualite-overlay {
-        height: 100%;
-        width: 100%;
-        padding: 40px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.17));
-        transition: 0.3s ease;
-        backdrop-filter: blur(0px);
-    }
-
-    .actualite:hover .actualite-overlay {
-        background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(3px);
-    }
-
-    .action-line {
-        background-color: var(--very-dark-blue);
-        width: 100%;
-        padding: 20px;
-    }
 
 </style>
 
-<section class="gradient-background-invert actualites column aic jcc">
-    <div class="title column aic gap20" style="padding: 0px 10%;">
-        <h2>L'actualité de Coolisses</h2>
-        <p class="big-text">Suivez toute l'actualité de Coolisses en vous abonnant à notre newsletter</p>
+<section class="flex flex-col py-32">
+    <div class="flex justify-between gap-4 p-4">
+        <h2 class="text-2xl font-bold">L'actualité de Coolisses</h2>
+        <a href="/actualites" class="flex items-center justify-center gap-2">
+            <p class="text-lg font-medium">Voir tout</p>
+            <svg class="size-4" style="fill: black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+        </a>
     </div>
     {% if actualites is defined %}
-        <div class="actualites-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
             {% for actualite in actualites %}
                 {% include 'actualite/actualiteCard.html.twig' with {'actualite': actualite} %}
             {% endfor %}
         </div> 
     {% endif %}
-
-    <div class="action-line">
-        <a href="/actualites" class="row jcc aic gap10">
-            <p class="white">Voir toutes nos actualités</p>
-            <svg class="icon service-icon arrow-right" style="fill: white; margin-bottom: 5px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-
-        </a>
-
-    </div>
 
 
 </section>

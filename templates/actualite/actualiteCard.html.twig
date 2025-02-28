@@ -1,11 +1,22 @@
-<a class="relative h-64 flex flex-col gap-2 justify-between p-8 bg-[url({{ vich_uploader_asset(actualite, 'imageFile') }})] hover:brightness-100 group" href="/actualite/{{ actualite.id }}">
-    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-    <div class="relative flex gap-2">
-        <span class="text-white border border-white rounded-full px-2 py-1 w-fit leading-none">actualité</span>
-        <span class="text-white border border-white rounded-full px-2 py-1 w-fit leading-none">blog</span>
+<a class="flex flex-col group outline-black hover:outline-2" href="/actualite/{{ actualite.id }}">
+    <div class="h-64 bg-[url({{ vich_uploader_asset(actualite, 'imageFile') }})] bg-cover bg-center"></div>
+
+    <div class="flex flex-col flex-1 justify-between gap-2 p-4 bg-[#DD6031]">
+        <div class="flex flex-col gap-2">
+            <div class="flex justify-between items-center">
+                <div class="relative flex gap-2">
+                    <span>
+                        {% include 'actualite/badge.html.twig' with {'color': 'pink', 'titre': 'titre'} %}
+                    </span>
+                </div>
+                <svg class="group-hover:rotate-360 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </div>
+            <h3 class="line-clamp-2 text-xl font-semibold">{{ actualite.titre }}</h3>
+        </div>
+
+        <span class="text-sm">{{ actualite.date|date("d/m/Y") }}</span>
     </div>
-    <div class="relative flex flex-col gap-2">
-        <h3 class="line-clamp-2 text-white text-2xl font-medium actualite-title">{{ actualite.titre }}</h3>
-        <span class="text-white">{{ actualite.date|date("d/m/Y") }}</span>
-    </div>
+    
 </a>
+
+

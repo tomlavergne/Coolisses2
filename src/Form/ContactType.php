@@ -16,18 +16,21 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-
+                'attr' => ['class' => 'w-full p-2 border bg-white'],
+                'label_attr' => ['class' => 'font-semibold text-gray-700'],
             ])
             ->add('email', EmailType::class, [
-
+                'attr' => ['class' => 'w-full p-2 border bg-white'],
+                'label_attr' => ['class' => 'font-semibold text-gray-700'],
             ])
             ->add('objet', TextType::class, [
-
+                'attr' => ['class' => 'w-full p-2 border bg-white'],
+                'label_attr' => ['class' => 'font-semibold text-gray-700'],
             ])
             ->add('message', TextareaType::class, [
-
-            ])
-        ;
+                'attr' => ['class' => 'w-full p-2 border bg-white h-32'],
+                'label_attr' => ['class' => 'font-semibold text-gray-700'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

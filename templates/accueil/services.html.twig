@@ -1,122 +1,35 @@
-<style>
-    .services {
-        background-color: var(--background-color2);
-    }
+<section class="flex justify-center">
+    <div class="flex flex-col items-center gap-8 bg-[#eeeeee] w-fit p-8">
+        <div class="flex gap-8">
+            <a class=" w-96 bg-[#DD6031] p-4 flex flex-col gap-2 group outline-black hover:outline-2" href="">
+                <div class="flex justify-between">
+                    <span class="text-xl font-semibold">Trouver un casting</span>
+                    <svg class="group-hover:rotate-360 transition-transform duration-300 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                </div>
+                <p>Vous êtes à la recherche d'un comédien pour votre film? Vous êtes au bon endroit</p>
+                <div class="h-48 bg-white"></div>
+            </a>
+            <a class="w-96 bg-[#E2EA8A] p-4 flex flex-col gap-2 group outline-black hover:outline-2" href="">
+                <div class="flex justify-between">
+                    <span class="text-xl font-semibold">Trouver un comédien</span>
+                    <svg class="group-hover:rotate-360 transition-transform duration-300 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                </div>
+                <p class="">Vous êtes à la recherche d'un comédien pour votre film? Vous êtes au bon endroit</p>
+                <div class="h-48 bg-white"></div>
+            </a>
 
-    .services-grid {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 100px 20px
-    }
-
-    @media screen and (max-width: 1200px) {
-        .services-grid {    grid-template-columns: 1fr 1fr; }
-    }
-
-    @media screen and (max-width: 800px) {
-        .services-grid {    grid-template-columns: 1fr; }
-    }
-
-    .service {
-        height: 200px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 10%);
-        padding: 20px;
-        color: var(--text-dark);
-        transition: 0.3s ease!important;
-        background-size: 100%!important;
-        background-position: center!important;
-        background-repeat: no-repeat!important;
-    }
-    .service:hover {
-        color: var(--text-dark);
-        box-shadow: 0 0 40px rgba(0, 0, 0, 30%);
-        background-size: 105%!important;
-    }
-
-    .service-content {
-        background-color: white;
-        padding: 20px;
-        transform: translateY(100px);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 10%);
-        z-index: 10;
-    }
-
-    .service-content p {
-        text-align: left;
-    }
-
-    .service-icon {
-        fill: var(--text-light);
-    }
-
-    #service1 { background: url("/img/backgrounds/formations.jpg"); }
-    #service2 { background: url("/img/backgrounds/stages.jpg"); }
-    #service3 { background: url("/img/backgrounds/miseenrelation.jpg"); }
-    #service4 { background: url("/img/backgrounds/annuaire.jpg");   }
-    #service5 { background: url("/img/backgrounds/formations.jpg");}
-    #service6 { background: url("/img/backgrounds/location.jpg");   }
-</style>
-
-<section class="services">
-    <div class="title column aic gap20">
-        <h2>Nos services</h2>
-        <p class="big-text">Nous vous proposons une gamme complète de services pour simplifier votre processus de création.</p>
-
+            <a class="text-white w-96 bg-[#1313BC] p-4 flex flex-col gap-2 group outline-black hover:outline-2" href=""><div class="flex justify-between">
+                    <span class="text-xl font-semibold">Location</span>
+                    <svg class="group-hover:rotate-360 transition-transform duration-300 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                </div>
+                <p class="text-white">Salle de casting, bureaux de production et matériel professionnel</p>
+                <div class="h-48 bg-white"></div>
+            </a>
+        </div>
+        <a class="flex items-center gap-2 px-4 py-2 rounded-full border hover:outline hover:bg-[#D9DD92] border-black outline-black transition duration-300 cursor-pointer group">
+            <svg class="size-6 group-hover:rotate-360 transition-transform duration-300 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            <span class="text-xl font-medium leading-none">Afficher tous les services</span>
+        </a>
     </div>
 
-    <div class="services-grid">
-        <a id="service1" class="service" href="/formations">
-            <div class="service-content column gap10">
-                <div class="row aic gap10">
-                    <h4>Formations pro</h4>
-                </div>
-                <p>Découvrez nos formations à destination des professionnels de l'audiovisuel.</p>
-            </div>
-        </a>
-
-        <a id="service2" class="service" href="/stages">
-            <div class="service-content column gap10">
-                <div class="row aic gap10">
-                    <h4>Stages de découverte</h4>
-                </div>
-                <p>Plongez dans l'univers fascinant du cinéma grâce à nos stages de découverte, ouverts à tous&nbsp!</p>
-            </div>
-        </a>
-        <a id="service3" class="service" href="/miseenrelation">
-            <div class="service-content column gap10">
-                <div class="row aic gap10">
-                    <h4>Base de donnée de professionnels</h4>
-                </div>
-                <p>Nous vous aidons à trouver des professionnels grâce à notre réseau d'experts.</p>
-            </div>
-        </a>
-
-        <a id="service4" class="service">
-            <div class="service-content column gap10">
-                <div class="row aic gap10">
-                    <h4>Annuaire numérique (à venir)</h4>
-                </div>
-                <p>Retrouvez facilement les acteurs culturels de Charente Maritime !</p>
-            </div>
-        </a>
-
-        <a id="service5" class="service">
-            <div class="service-content column gap10">
-                <div class="row aic gap10">
-                    <h4>Salles de casting et bureaux de production</h4>
-                </div>
-                <p>Rencontrez et auditionnez des acteurs et des actrices dans l'une de nos salles de casting.</p>
-            </div>
-        </a>
-        <a id="service6" class="service" href="/locations">
-            <div class="service-content column gap10">
-                <div class="row aic gap10">
-                    <h4>Location de matériel</h4>
-                </div>
-                <p>Nous louons du matériel de prise de vue et de capture du son.</p>
-            </div>
-        </a>
-
-    </div>
 </section>

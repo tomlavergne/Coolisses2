@@ -14,7 +14,7 @@
             <h1 class="text-5xl font-bold">Actualité</h1>
             <p class="text-md font-medium">Retrouvez ici toute l'actualité de l'association&nbsp:</p>
         </div>
-        <div class="grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid p-4 gap-4">
+        <div class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid p-4 gap-4">
             {% for actualite in actualites %}
                 {% include 'actualite/actualiteCard.html.twig' with {'actualite': actualite} %}
             {% endfor %}

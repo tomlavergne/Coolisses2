@@ -1,256 +1,30 @@
-    <style>
-        .hero {
-            height: calc(100vh - 84px);
-            min-height: 400px;
-            background-size: cover;
-            background-position: center;
-        }
+<div class="p-16 flex justify-center gap-8">
+    <svg class="flex-1 max-w-40 hidden xl:block" viewBox="0 0 200 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M194.127 513.209L199.281 510.632C200.164 510.19 199.649 508.24 199.281 507.319L195.968 501.061H194.864L117.928 352.343L121.241 351.607L120.137 346.454L121.977 344.981L117.192 336.146L113.142 335.41L111.67 337.619L105.78 338.355V197.368L104.676 196.631V190.742L105.78 190.005V178.594L103.94 178.226V131.107L107.253 130.739V113.438H115.719V110.861L122.713 106.444L139.279 107.916L162.47 57.8528L145.168 54.9079L159.157 21.4095L89.2151 3.74009C87.1291 3.61736 81.7056 2.85653 76.6992 0.795098C71.6929 -1.26634 68.7234 1.16321 67.8645 2.63566L53.14 26.5631C39.8879 23.3237 31.4213 23.2501 28.8445 23.6182C22.9547 29.8025 26.3904 32.821 28.8445 33.5573L32.1575 37.2384L27.7401 48.2818C29.5071 56.5275 36.3295 63.2517 39.5198 65.5831C38.0473 67.6446 39.1517 70.614 39.8879 71.841C27.8169 84.2138 27.6207 85.454 26.5224 92.3945C26.2809 93.9203 25.9958 95.7215 25.5315 97.9771C23.47 107.99 32.5256 106.566 37.3111 104.603H49.827L51.6675 106.444C52.551 109.094 58.1709 110.493 60.8703 110.861C61.6066 110.738 63.7416 111.082 66.392 113.438C69.0425 115.794 73.6316 115.401 75.5949 114.91C75.5949 118.444 81.7301 119.082 84.7977 118.96H87.3745V122.273H89.5832L91.7919 123.745V125.954C91.2029 129.782 93.7551 130.985 95.1049 131.107H98.0498V179.698H92.5281V187.429L97.3136 188.165V196.631C94.6632 198.987 96.2092 200.803 97.3136 201.417V341.668H86.2702V347.558C62.3428 392.1 14.2672 481.478 13.3837 482.656C12.2794 484.128 13.3837 485.232 15.5924 485.969C17.3593 486.558 18.7827 485.232 19.2735 484.496L33.63 456.519L35.4705 454.679L5.28523 515.418L3.81279 516.154C3.19926 517.258 1.67773 519.982 0.499771 522.044C-0.678192 524.105 0.499771 526.093 1.23599 526.829L4.18089 529.774L9.70261 519.467V518.363L51.2994 436.273L90.3194 431.12C100.038 432.003 112.284 431.242 117.192 430.752C130.444 431.341 138.174 431.979 140.383 432.224C146.273 446.335 158.42 475.514 159.893 479.342C161.365 483.171 164.678 482.41 166.151 481.551L163.574 475.293L144.8 432.224H153.267L190.078 503.27L189.342 504.006L194.127 513.209ZM46.8819 79.5711L41.3602 73.6813C37.6791 76.7489 30.0959 84.5038 29.2124 90.9826C28.9117 93.1879 28.5018 95.0655 28.1537 96.6603C27.2234 100.922 26.7342 103.163 29.9487 104.235C33.4826 105.413 36.5747 102.517 37.6791 100.922C39.3969 96.0135 43.6425 84.8719 46.8819 79.5711ZM73.3861 107.18L74.1223 111.229C73.3861 112.333 70.9565 113.732 67.1281 110.493V106.443L73.3861 107.18ZM45.7776 92.4551C47.4955 92.8232 50.4159 94.5901 48.3544 98.713C47.4955 99.8173 45.1888 101.069 42.8328 97.2405L45.7776 92.4551ZM151.426 428.911L112.406 353.448L143.328 428.911H151.426ZM138.542 428.174L107.253 425.598V353.079L138.542 428.174ZM96.9452 425.598C96.3562 425.598 67.2507 429.77 52.7716 431.856L92.5279 351.239L97.6814 350.503L96.9452 425.598Z" fill="black"/>
+        <path d="M80.6947 6L154.769 23.8346L120.324 105L68.4725 99.1765L59.954 65.6912L56.991 63.5074L80.6947 6Z" fill="white"/>
+        <path d="M54.7688 102.088H69.2132L68.4725 99.1765M68.4725 99.1765L59.954 65.6912L56.991 63.5074L80.6947 6L154.769 23.8346L120.324 105L68.4725 99.1765Z" stroke="black"/>
+    </svg>
 
-        .hero-overlay {
-            /*background: linear-gradient(to left, rgba(0, 0, 0, 0.24), rgba(2, 2, 28, 0.7));*/
-            background-color: rgba(1, 4, 23, 0.6);
-            width: 100%;
-            height: 100%;
-            transition: background-color 1s ease;
-        }
-
-        .hero-overlay canvas {
-            opacity: 0;
-            transition: 0.3s ease;
-            z-index: 1;
-        }
-
-        .hero-overlay:hover canvas {
-            opacity: 1;
-        }
-
-
-        .hero-content{
-            height: 100%;
-            max-width: 500px;
-            width: 100%;
-            gap: 30px;
-            /* z-index: 9999; */
-        }
-
-        .hero-content p,
-        .hero-content h1 {
-            color: white;
-            text-align: inherit;
-        }
-
-        .hero-btn
-        {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            flex-wrap: wrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .transparent-btn {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: var(--font-size-md);
-            border: 2px solid white;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease-in-out;
-        }
-        .transparent-btn:hover {
-            background-color: rgba(255, 255, 255, 0.42);
-        }
-
-        .double-hero {
-            height: calc(100vh - 84px);
-            position: relative;
-            background-color: black;
-        }
-
-        .half-hero {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            transition: 0.3s ease;
-        }
-
-        .left-hero {
-            background: url("/img/backgrounds/action.jpg") right center no-repeat;
-            background-size: cover;
-            clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
-            transition: 0.3s ease;
-        }
-
-        .right-hero {
-            background: url("/img/backgrounds/stages.jpg") center no-repeat;
-            background-size: cover;
-            clip-path: polygon(55% 0%, 100% 0%, 100% 100%, 45% 100%);
-            transition: 0.3s ease;
-        }
-
-
-        .left-hero:hover {
-            clip-path: polygon(0 0, 70% 0, 65% 100%, 0 100%);
-        }
-
-        .hero p,
-        .hero h1,
-        .hero button{
-            transition: 0.3s ease;
-        }
-
-        .hero:hover p,
-        .hero:hover h1 {
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-        .hero:hover button{
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .right-hero:hover {
-            clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 35% 100%);
-        }
-
-        .left-hero:hover + .right-hero {
-            clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 65% 100%);
-        }
-        .right-hero:hover + .left-hero {
-            clip-path: polygon(0 0, 40% 0, 35% 100%, 0 100%);
-        }
-
-        .left-hero:hover .hero-overlay {
-            background-color: rgba(29, 33, 59, 0.4);
-        }
-        .right-hero:hover .hero-overlay {
-            background-color: rgba(44, 46, 61, 0.3);
-        }
-
-        .left-hero-content {
-            padding-left: var(--padding-w);
-        }
-        .right-hero-content {
-            padding-right: var(--padding-w);
-            align-items: flex-end;
-        }
-        .right-hero-content p,
-        .right-hero-content h1
-        {
-            text-align: right;
-        }
-
-        .hero-content {
-            padding-left: var(--padding-w);
-        }
-
-        .double-hero:hover p,
-        .double-hero:hover h1{
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .hero-overlay:hover .hero-btn,
-        .hero-overlay:hover p,
-        .hero-overlay:hover h1{
-            opacity: 1;
-        }
-
-
-        .right-hero:hover + .left-hero p {
-            background-color: black;
-        }
-
-        .mono-hero {
-            display: none;
-            transition: 0.3s ease;
-            flex-direction: column;
-            background: url("/img/backgrounds/action.jpg") right center no-repeat;
-            background-size: cover;
-        }
-
-
-
-        @media screen and (max-width: 1000px) {
-            .double-hero { display: none; }
-
-            .mono-hero { display: flex; }
-
-            .hero-content { max-width: unset; }
-
-            .hero-btn { opacity: 1; }
-
-            .hero {
-                height: unset;
-                min-height: unset;
-            }
-
-            .hero-overlay {
-                padding: 80px 0;
-            }
-        }
-
-    </style>
-
-
-    <div class="double-hero column aic">
-        <div class="hero half-hero left-hero">
-            <div class="hero-overlay left-overlay column aifs"> <!--id="particles-js-1"-->
-                <div class="left-hero-content hero-content column jcc">
-                    <p>SERVICES POUR LES PROFESSIONNELS</p>
-                    <h1>Coolisses Professionnel</h1>
-                    <div class="hero-btn">
-                        <a href="{{ path('app_coolisses_production') }}">
-                            <button class="transparent-btn">NOUS DÉCOUVRIR</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero half-hero right-hero">
-            <div class="hero-overlay right-overlay column aife"> <!--id="particles-js-2"-->
-                <div class="right-hero-content hero-content column jcc">
-                    <p>PÔLE D'ÉDUCATION A L'IMAGE ET AU SON</p>
-                    <h1>Coolisses Éducation</h1>
-                    <div class="hero-btn">
-                        <a href="{{ path('app_coolisses_education') }}">
-                            <button class="transparent-btn">NOUS DÉCOUVRIR</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mouse-div" style="pointer-events: none;">
-            <div>
-                <div class="mouse column">
-                    <div class="dot"></div>
-                </div>
-            </div>
-            <div>
-                <p style="opacity: 1; font-weight: lighter" class="white">Faites défiler</p>
-            </div>
+    <div class="max-w-192 flex flex-col flex-2 gap-8">
+        <h1 class="text-6xl font-semibold text-center">Coolisses dynamise l'audiovisuel à La Rochelle depuis 1993.</h1>
+        <p class="text-md font-medium text-center">Coolisses est une association rochelaise de professionnels du cinéma. Nous mettons à disposition de nos membres une gamme variée de services visant à simplifier leur processus de production cinématographique.
+           <a class="font-medium underline" href="">En savoir plus</a></p>
+        <div class="flex justify-center gap-4">
+            <button class="border-2 border-black px-8 py-4 rounded-full flex items-center gap-2">
+                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                <span class="text-md font-medium leading-none">Voir la vidéo de présentation</span>
+            </button>
+            <button class="bg-black px-8 py-4 rounded-full cursor-pointer">
+                <span class="text-white text-md font-medium leading-none">Adhérer</span>
+            </button>
         </div>
     </div>
 
-    <div class="hero mono-hero">
-        <div class="hero-overlay right-overlay column aife">
+    <svg class="flex-1 max-w-40 hidden xl:block" viewBox="0 0 200 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.8726 513.209L0.719012 510.632C-0.16446 510.19 0.350898 508.24 0.719012 507.319L4.03203 501.061H5.13637L82.0721 352.343L78.7591 351.607L79.8634 346.454L78.0228 344.981L82.8083 336.146L86.8575 335.41L88.33 337.619L94.2198 338.355V197.368L95.3242 196.631V190.742L94.2198 190.005V178.594L96.0604 178.226V131.107L92.7474 130.739V113.438H84.2808V110.861L77.2866 106.444L60.7215 107.916L37.5304 57.8528L54.8317 54.9079L40.8434 21.4095L110.785 3.74009C112.871 3.61736 118.294 2.85653 123.301 0.795098C128.307 -1.26634 131.277 1.16321 132.135 2.63566L146.86 26.5631C160.112 23.3237 168.579 23.2501 171.156 23.6182C177.045 29.8025 173.61 32.821 171.156 33.5573L167.842 37.2384L172.26 48.2818C170.493 56.5275 163.671 63.2517 160.48 65.5831C161.953 67.6446 160.848 70.614 160.112 71.841C172.183 84.2138 172.379 85.454 173.478 92.3945C173.719 93.9203 174.004 95.7215 174.469 97.9771C176.53 107.99 167.474 106.566 162.689 104.603H150.173L148.332 106.444C147.449 109.094 141.829 110.493 139.13 110.861C138.393 110.738 136.258 111.082 133.608 113.438C130.958 115.794 126.368 115.401 124.405 114.91C124.405 118.444 118.27 119.082 115.202 118.96H112.625V122.273H110.417L108.208 123.745V125.954C108.797 129.782 106.245 130.985 104.895 131.107H101.95V179.698H107.472V187.429L102.686 188.165V196.631C105.337 198.987 103.791 200.803 102.686 201.417V341.668H113.73V347.558C137.657 392.1 185.733 481.478 186.616 482.656C187.721 484.128 186.616 485.232 184.408 485.969C182.641 486.558 181.217 485.232 180.726 484.496L166.37 456.519L164.529 454.679L194.715 515.418L196.187 516.154C196.801 517.258 198.322 519.982 199.5 522.044C200.678 524.105 199.5 526.093 198.764 526.829L195.819 529.774L190.297 519.467V518.363L148.701 436.273L109.681 431.12C99.9624 432.003 87.7165 431.242 82.8083 430.752C69.5562 431.341 61.8258 431.979 59.6172 432.224C53.7273 446.335 41.5796 475.514 40.1071 479.342C38.6347 483.171 35.3217 482.41 33.8492 481.551L36.426 475.293L55.1998 432.224H46.7332L9.92185 503.27L10.6581 504.006L5.8726 513.209ZM153.118 79.5711L158.64 73.6813C162.321 76.7489 169.904 84.5038 170.788 90.9826C171.088 93.1879 171.498 95.0655 171.846 96.6603C172.777 100.922 173.266 103.163 170.051 104.235C166.517 105.413 163.425 102.517 162.321 100.922C160.603 96.0135 156.358 84.8719 153.118 79.5711ZM126.614 107.18L125.878 111.229C126.614 112.333 129.043 113.732 132.872 110.493V106.443L126.614 107.18ZM154.222 92.4551C152.505 92.8232 149.584 94.5901 151.646 98.713C152.504 99.8173 154.811 101.069 157.167 97.2405L154.222 92.4551ZM48.5737 428.911L87.5937 353.448L56.6722 428.911H48.5737ZM61.4577 428.174L92.7473 425.598V353.079L61.4577 428.174ZM103.055 425.598C103.644 425.598 132.749 429.77 147.228 431.856L107.472 351.239L102.319 350.503L103.055 425.598Z" fill="black"/>
+        <path d="M119.305 6L45.2312 23.8346L79.6756 105L131.527 99.1765L140.046 65.6912L143.009 63.5074L119.305 6Z" fill="white"/>
+        <path d="M145.231 102.088H130.787L131.527 99.1765M131.527 99.1765L140.046 65.6912L143.009 63.5074L119.305 6L45.2312 23.8346L79.6756 105L131.527 99.1765Z" stroke="black"/>
+    </svg>
 
-            <div class="hero-content column jcc">
-                <p>ASSOCIATION DES PROFESSIONNELS DE L'AUDIOVISUEL</p>
-                <h1>Bienvenue sur le site de Coolisses</h1>
-                <div class="hero-btn">
-                    <a href="{{ path('app_coolisses_production') }}">
-                        <button class="transparent-btn">COOLISSES PROFESSIONNELS</button>
-                    </a>
-                    <a href="{{ path('app_coolisses_education') }}">
-                        <button class="transparent-btn">COOLISSES EDUCATION</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% block javascripts %}
-        <script src="/js/particles/particles.js"></script>
-        <script src="/js/particles-app.js"></script>
-    {% endblock %}
+</div>
 

@@ -4,230 +4,10 @@
         left: 0;
         position: sticky;
         width: 100%;
+        z-index: 900
     }
-
-    #tablet-header {
-        display: none;
-    }
-
-    #mobile-header {
-        display: none;
-    }
-
-
-    @media only screen and (max-width: 1200px) {
-        .header-content {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        #tablet-header {
-            display: block;
-        }
-
-        #computer-header {
-            display: none;
-        }
-
-        #mobile-header {
-            display: none;
-        }
-    }
-
-    @media only screen and (max-width: 600px) {
-
-        #mobile-header {
-            display: block;
-        }
-
-        #tablet-header {
-            display: none;
-        }
-
-        #computer-header {
-            display: none;
-        }
-    }
-
-
-    .dropdown {
-        transform: translate(-15px, 10px);
-        padding: 15px;
-        border-radius: 10px;
-        background-color: white;
-        position: absolute;
-        z-index: 9999;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 20%);
-    }
-
-    .menu-item-dropdown {
-        display: none;
-        flex-direction: column;
-    }
-
-    .menu-item{
-        gap: 10px;
-        white-space: nowrap;
-        padding: 10px 0;
-    }
-    .menu-item .dropdown-icon {
-        fill: var(--text-light);
-    }
-
-    .menu-item:hover .menu-item-dropdown{
-        display: flex;
-    }
-    .menu-item:hover .dropdown-icon {
-        fill: var(--dark-blue);
-    }
-    .menu-item:hover .dropdown-trigger-a  {
-        color: var(--dark-blue);
-    }
-
-    .dropdown a {
-        margin: 0;
-    }
-
-    .icon {
-        width: 15px;
-    }
-
-    .big-icon {
-        width: 20px;
-    }
-
-    .burger-btn .icon {
-        fill: var(--text-light);
-    }
-
-    .burger-btn:hover .icon {
-        fill: var(--dark-blue);
-    }
-
-    .drawer-overlay{
-        background-color: black;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: opacity 0.3s ease-in-out;
-        z-index: 950;
-    }
-
-    .drawer-div {
-        position: fixed;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: end;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        z-index: 1000;
-    }
-
-    .drawer {
-        background: var(--background-color);
-        width: 80%;
-        height: 100%;
-        padding: 50px;
-    }
-
-    .drawer-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 100%;
-
-    }
-
-    .drawer-dropdown {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .close-drawer-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-    .close-drawer-btn .big-icon {
-        fill: var(--text-light);
-    }
-    .close-drawer-btn:hover .big-icon {
-        fill: var(--dark-blue);
-    }
-
-    .spacer-x {
-        height: 1px;
-        width: 100%;
-        background-color: black;
-    }
-
-    .admin-nav-div{
-        background-color: var(--very-dark-blue);
-        width: 100%;
-    }
-
-    .admin-nav {
-        height: 40px;
-        width: 100%;
-        padding: 0 var(--padding-w);
-
-    }
-    .admin-nav a {
-        color: white;
-    }
-    .admin-nav a:hover {
-        color: yellow;
-    }
-
-    .alert-div {
-        width: 100%;
-        padding: 10px;
-        background-color: var(--very-dark-blue);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .alert-link {
-        color: white;
-    }
-    .alert-link svg {
-        fill: white;
-    }
-
-    .close-alert-btn {
-
-    }
-
-    .alert-content {
-        padding: 0 var(--padding-w);
-        width: 100%;
-    }
-
-    .little-icon {
-        height: 20px;
-        width: 20px;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .alert-div {
-            display: none!important;
-        }
-    }
-
 </style>
 
-{% if app.user %}
-    <div class="admin-nav-div column aic jcc">
-        <nav class="admin-nav row gap20 sb aic">
-            <a href="{{ path('app_admin') }}">Espace Administrateur</a>
-            <a href="{{ path('app_logout') }}">Déconnexion</a>
-        </nav>
-    </div>
-{% endif %}
 {% if alert is defined and alert is not null %}
     <div id="alert-div" style="background-color: {{ alert.couleur }}" class="alert-div aic">
         <div class="alert-content row aic sb">
@@ -237,164 +17,131 @@
                 <svg style="margin-bottom: 5px" class="icon service-icon arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
             </a>
             <a id="close-alert-btn" class="close-alert-btn column aic jcc">
-                <svg class="little-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" fill="white"/></svg>
+                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" fill="white"/></svg>
             </a>
         </div>
     </div>
 {% endif %}
 
-<header id="computer-header" class="p-4 bg-white flex justify-between">
+<header class="p-4 bg-white flex justify-between ">
     <div class="flex items-center gap-4">
         <a href="/">
             <div class="bg-black h-8 w-24"></div>
             {# <img class="header-logo" src="{{ asset('img/logo.png') }}" alt=""> #}
         </a>
-        <nav class="flex items-center gap-4">
+        <nav class="hidden lg:flex items-center gap-4">
             <a href="/">Accueil</a>
-            <div class="menu-item">
+            <div class="group">
                 <a class="flex items-center gap-2" href="/services">
-                    <span>Nos services</span>
+                    Nos services
                     <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                 </a>
-                <div class="dropdown menu-item-dropdown gap10">
-                    <a href="/formations">Formation professionnelle</a>
-                    <a href="/stages">Stage de découverte</a>
-                    <a href="/miseenrelation">Mise en relation</a>
-                    <a href="/locations">Location de materiel</a>
+                <div class="absolute invisible pt-2 group-hover:visible">
+                    <div class="flex flex-col border border-black p-2 gap-1 bg-white">
+                        <a href="/formations">Formation professionnelle</a>
+                        <a href="/stages">Stage de découverte</a>
+                        <a href="/miseenrelation">Mise en relation</a>
+                        <a href="/locations">Location de materiel</a>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <a class="flex items-center gap-2" href="{{ path('app_realisations') }}">
-                    <span>Nos réalisations</span>
+            <div class="group">
+                <a class="flex items-center gap-2" href="/services">
+                    Nos réalisations
                     <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                 </a>
-                <div class="dropdown menu-item-dropdown gap10">
-                    <a href="/realisations">Toutes les réalisations</a>
-                    <a href="{{ path('app_archive') }}">Archives</a>
+                <div class="absolute invisible pt-2 group-hover:visible bg-white">
+                    <div class="flex flex-col border border-black p-2 gap-1">
+                        <a href="/realisations">Toutes les réalisations</a>
+                        <a href="{{ path('app_archive') }}">Archives</a>
+                    </div>
                 </div>
             </div>
-                
             <a href="{{ path('app_actualites') }}">Actualité</a>
         </nav>
         
     </div>
 
     <div class="flex items-center gap-4">
-        <a href="{{ path('app_contact') }}">Nous contacter</a>
-        <a href="{{ path('app_adherer') }}" class="rounded-full w-fit bg-black text-white px-4 py-2">Adhérer</a>
+        <div class="hidden sm:flex flex items-center gap-4">
+            <a href="{{ path('app_contact') }}">Nous contacter</a>
+            <a href="{{ path('app_adherer') }}" class="rounded-full w-fit bg-black text-white px-4 py-2">Adhérer</a>
+        </div>
+
+        <button id="menu-btn" class="flex flex-col justify-center items-center w-6 h-4 relative cursor-pointer lg:hidden">
+            <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out -translate-y-2"></span>
+            <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out"></span>
+            <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out translate-y-2"></span>
+            <style>
+                #menu-btn.open span:nth-child(1) {
+                    transform: rotate(45deg);
+                    transform-origin: center;
+                    translate: 0;
+                }
+                #menu-btn.open span:nth-child(2) {
+                    opacity: 0;
+                }
+                #menu-btn.open span:nth-child(3) {
+                    transform: rotate(-45deg); 
+                    transform-origin: center;
+                    translate: 0;
+                }
+            </style>
+        </button>
     </div>
 </header>
 
-
-<header id="tablet-header">
-    <div class="header-content">
-        <div>
-            <a href="/">
-                <img class="header-logo" src="{{ asset('img/logo.png') }}" alt="">
-            </a>
-        </div>
-
-        <div class="row aic jce gap20">
-            <div class="menu-item">
-                <a href="{{ path('app_contact') }}">Nous contacter</a>
-            </div>
-            <div class="menu-item">
-                <a href="{{ path('app_adherer') }}" class="cta">Adhérer
-                    <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-                </a>
-            </div>
-            <a class="burger-btn" id="burger-btn-tablet">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-            </a>
-        </div>
-    </div>
-</header>
-
-
-
-<header id="mobile-header" class="{{ app.user ? 'top84' : '' }}">
-    <div class="header-content">
-
-        <div class="row">
-            <a href="/">
-                <img class="header-logo" src="{{ asset('img/logo.png') }}" alt="">
-            </a>
-        </div>
-
-        <div class="row aic jce gap20">
-            <a class="burger-btn" id="burger-btn-mobile">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-            </a>
-        </div>
-    </div>
-</header>
-
-<div id="drawer-overlay" class="drawer-overlay"></div>
-
-<div id="drawer-div" class="{{ app.user ? 'top84 drawer-div' : 'drawer-div' }}" >
-    <div id="drawer" class="drawer">
-        <a id="close-drawer-btn" class="close-drawer-btn">
-            <svg class="big-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
-        </a>
-        <div class="drawer-content">
-
-            <div class="menu-item column">
-                <a href="/">Accueil</a>
-            </div>
-
-            <div class="menu-item column">
-                <a class="row aic gap5" href="/services">Nos services</a>
-            </div>
-
-            <div class="menu-item column">
-                <a class="row aic gap5" href="{{ path('app_realisations') }}">Nos réalisations</a>
-            </div>
-
-            <div class="menu-item">
-                <a href="{{ path('app_actualites') }}">Actualité</a>
-            </div>
-
-            <div class="menu-item">
-                <a href="{{ path('app_contact') }}">Nous contacter</a>
-            </div>
-
-            <div class="menu-item">
-                <a href="{{ path('app_adherer') }}" class="cta">Adhérer
-                    <svg class="icon service-icon arrow-right arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-                </a>
-            </div>
-
-        </div>
-
-    </div>
-
+<div id="drawer" class="flex flex-col gap-4 p-4 border-b border-black md:hidden" >
+    <a href="/">Accueil</a>
+    <a href="/services">Nos services</a>
+    <a href="{{ path('app_realisations') }}">Nos réalisations</a>
+    <a href="{{ path('app_actualites') }}">Actualité</a>
+    <a href="{{ path('app_contact') }}">Nous contacter</a>
+    <a href="{{ path('app_adherer') }}">Adhérer</a>
 </div>
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const alertDiv = document.getElementById('alert-div');
-        const closeAlertBtn = document.getElementById('close-alert-btn');
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        const menuBtn = document.getElementById('menu-btn');
+        let showDrawer = false;
 
-        let dateActuelle = new Date()
-        let dateStockee = new Date(localStorage.getItem('isClosedAt'));
+        const drawer = document.getElementById('drawer');
+        drawer.style.display = 'none';
 
-        let differenceEnMilliseconds = Math.abs(dateActuelle - dateStockee);
-        let differenceEnHeures = differenceEnMilliseconds / (1000 * 60 * 60);
-
-        if(differenceEnHeures > 1){
-            alertDiv.style.display = 'flex'
-        }
-
-        if(closeAlertBtn){
-            closeAlertBtn.addEventListener('click', function() {
-                alertDiv.style.display = 'none'
-
-                localStorage.setItem('isClosedAt', new Date().toString());
-
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                if (showDrawer) {
+                    drawer.style.display = 'none';
+                    menuBtn.classList.remove('open');
+                } else {
+                    drawer.style.display = 'flex';
+                    menuBtn.classList.add('open');
+                }
+                showDrawer = !showDrawer;
             });
         }
 
+        const alertDiv = document.getElementById('alert-div');
+        const closeAlertBtn = document.getElementById('close-alert-btn');
+
+        if (alertDiv && closeAlertBtn) {
+            let dateActuelle = new Date();
+            let dateStockee = new Date(localStorage.getItem('isClosedAt'));
+
+            let differenceEnMilliseconds = Math.abs(dateActuelle - dateStockee);
+            let differenceEnHeures = differenceEnMilliseconds / (1000 * 60 * 60);
+
+            if (differenceEnHeures > 1) {
+                alertDiv.style.display = 'flex';
+            }
+
+            closeAlertBtn.addEventListener('click', function() {
+                alertDiv.style.display = 'none';
+                localStorage.setItem('isClosedAt', new Date().toString());
+            });
+        }
     });
 </script>
 

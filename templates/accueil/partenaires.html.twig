@@ -1,37 +1,14 @@
-<style>
-    .partenaire {
-        height: 70px;
-    }
-
-    .partenaire-row {
-        flex-wrap: wrap;
-
-    }
-
-    .partenaire img {
-        filter: grayscale(100%) opacity(80%);
-        transition: filter 0.3s ease;
-        height: 60px;
-        width: auto;
-        margin: 10px;
-    }
-    .partenaire img:hover {
-        filter: none;
-    }
-</style>
-
-<section class="partenaires column aic gap20">
-    <div class="title">
-        <h2>Nos partenaires</h2>
-    </div>
+<section class="flex flex-col items-center gap-5">
+    <h2 class="text-4xl font-bold w-fit">En partenariat avec :</h2>
     {% if partenaires is defined %}
-    <div class="partenaire-row row jcc aic gap20">
+    <div class="flex justify-center items-center gap-4">
         {% for partenaire in partenaires %}
-            <a {% if partenaire.lien %} href="{{ partenaire.lien }}" target="_blank" {% endif%} class="partenaire">
-                <img src="{{ vich_uploader_asset(partenaire, 'imageFile') }}" alt="image">
+            <a {% if partenaire.lien %} href="{{ partenaire.lien }}" target="_blank" {% endif%} class="h-[70px]">
+                <img src="{{ vich_uploader_asset(partenaire, 'imageFile') }}" 
+                     alt="image"
+                     class="h-[60px] w-auto m-2.5 grayscale opacity-80 transition-all duration-300 hover:grayscale-0 hover:opacity-100">
             </a>
         {% endfor %}
     </div>
     {% endif %}
-
 </section>
