@@ -21,6 +21,9 @@ class Metier
     #[ORM\ManyToMany(targetEntity: Profil::class, mappedBy: 'metier')]
     private Collection $profils;
 
+    #[ORM\Column(length: 255)]
+    private ?string $couleur = null;
+
 
     public function __construct()
     {
@@ -99,6 +102,18 @@ class Metier
         if ($this->profilAdherrents->removeElement($profilAdherrent)) {
             $profilAdherrent->removeMetier($this);
         }
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): static
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

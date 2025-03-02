@@ -81,6 +81,9 @@ class Profil
     #[ORM\ManyToMany(targetEntity: AffichageGeneral::class, mappedBy: 'artistesEnVitrine')]
     private Collection $affichageGenerals;
 
+    #[ORM\Column(length: 512, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->metier = new ArrayCollection();
@@ -345,6 +348,18 @@ class Profil
         if ($this->affichageGenerals->removeElement($affichageGeneral)) {
             $affichageGeneral->removeArtistesEnVitrine($this);
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

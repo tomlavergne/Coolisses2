@@ -1,12 +1,12 @@
-<section class="flex flex-col items-center gap-5">
-    <h2 class="text-4xl font-bold w-fit">En partenariat avec :</h2>
+<section class="flex flex-col items-center">
+    <h2 class="text-3xl font-bold w-fit mb-8">En partenariat avec :</h2>
     {% if partenaires is defined %}
     <div class="flex justify-center items-center gap-4">
         {% for partenaire in partenaires %}
-            <a {% if partenaire.lien %} href="{{ partenaire.lien }}" target="_blank" {% endif%} class="h-[70px]">
+            <a {% if partenaire.lien %} href="{{ partenaire.lien }}" target="_blank" {% endif%}>
                 <img src="{{ vich_uploader_asset(partenaire, 'imageFile') }}" 
                      alt="image"
-                     class="h-[60px] w-auto m-2.5 grayscale opacity-80 transition-all duration-300 hover:grayscale-0 hover:opacity-100">
+                     class="max-h-12 max-w-32 w-auto m-2.5 grayscale opacity-80 transition-all duration-300 hover:grayscale-0 hover:opacity-100">
             </a>
         {% endfor %}
     </div>

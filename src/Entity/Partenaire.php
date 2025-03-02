@@ -18,10 +18,6 @@ class Partenaire
     #[ORM\Column]
     private ?int $id = null;
 
-
-    #[ORM\Column]
-    private ?int $position = null;
-
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
@@ -46,18 +42,6 @@ class Partenaire
     {
         return $this->nom;
     }
-
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(?int $position): void
-    {
-        $this->position = $position;
-    }
-
-
 
     public function setNom(string $nom): static
     {

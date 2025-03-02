@@ -21,16 +21,6 @@ class PartenaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Partenaire::class);
     }
 
-
-    public function findAllOrdered(): array
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.position', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
 //    public function findOneBySomeField($value): ?Partenaire
 //    {
 //        return $this->createQueryBuilder('p')

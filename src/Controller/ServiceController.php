@@ -70,7 +70,6 @@ class ServiceController extends AbstractController
             'now' =>  new \DateTime(),
             'form' => $form->createView()
         ]);
-
     }
 
 

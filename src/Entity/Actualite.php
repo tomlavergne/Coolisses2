@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ActualiteRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -21,9 +23,6 @@ class Actualite
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $texte = null;
 
@@ -38,6 +37,17 @@ class Actualite
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeInterface $updatedAt = null;
+
+    /**
+     * @var Collection<int, CategorieActualite>
+     */
+    #[ORM\ManyToMany(targetEntity: CategorieActualite::class, inversedBy: 'actualites')]
+    private Collection $categorie;
+
+    public function __construct()
+    {
+        $this->categorie = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -57,18 +67,6 @@ class Actualite
     public function setTitre(?string $titre): void
     {
         $this->titre = $titre;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     public function getTexte(): ?string
@@ -127,6 +125,30 @@ class Actualite
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return Collection<int, CategorieActualite>
+     */
+    public function getCategorie(): Collection
+    {
+        return $this->categorie;
+    }
+
+    public function addCategorie(CategorieActualite $categorie): static
+    {
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie->add($categorie);
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(CategorieActualite $categorie): static
+    {
+        $this->categorie->removeElement($categorie);
+
+        return $this;
     }
 
 

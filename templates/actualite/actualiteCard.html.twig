@@ -1,13 +1,13 @@
-<a class="flex flex-col group outline-black hover:outline-2" href="/actualite/{{ actualite.id }}">
-    <div class="h-64 bg-[url({{ vich_uploader_asset(actualite, 'imageFile') }})] bg-cover bg-center"></div>
+<a class="flex flex-col group outline-black hover:bg-[#EFEFEF]" href="/actualite/{{ actualite.id }}">
+    <div class="aspect-video bg-[url({{ vich_uploader_asset(actualite, 'imageFile') }})] bg-cover bg-center"></div>
 
-    <div class="flex flex-col flex-1 justify-between gap-2 p-4 bg-[#DD6031]">
+    <div class="flex flex-col flex-1 justify-between gap-2 p-4">
         <div class="flex flex-col gap-2">
             <div class="flex justify-between items-center">
                 <div class="relative flex gap-2">
-                    <span>
-                        {% include 'actualite/badge.html.twig' with {'color': 'pink', 'titre': 'titre'} %}
-                    </span>
+                    {% for categorie in actualite.categorie %}
+                        {% include 'components/badge.html.twig' with {'color': categorie.couleur, 'titre': categorie.nom} %}
+                    {% endfor %}
                 </div>
                 <svg class="group-hover:rotate-360 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </div>

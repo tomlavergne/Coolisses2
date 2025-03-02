@@ -27,7 +27,6 @@ class PartenaireCrudController extends AbstractCrudController
             TextField::new('imageFile')
                 ->setFormType(VichImageType::class)
                 ->setLabel('Image'),
-            NumberField::new('position'),
         ];
     }
 

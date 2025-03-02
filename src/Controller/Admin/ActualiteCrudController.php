@@ -5,7 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Actualite;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -32,8 +34,12 @@ class ActualiteCrudController extends AbstractCrudController
     {
         return [
             TextField::new('titre'),
-            TextEditorField::new('description'),
             TextEditorField::new('texte'),
+            AssociationField::new('categorie')->setRequired(false)
+                ->setFormTypeOptions([
+                    'choice_label' => 'nom',
+                    'multiple' => true,
+                ]),
             TextField::new('imageFile')
                 ->setFormType(VichImageType::class)
                 ->setLabel('Image'),

@@ -36,7 +36,7 @@ class AccueilController extends AbstractController
             $actualiteDialogBox = NULL;
         }
 
-        $partenaires = $entityManager->getRepository(Partenaire::class)->findAllOrdered();
+        $partenaires = $entityManager->getRepository(Partenaire::class)->findAll();
 
         $questions = $entityManager->getRepository(QuestionFAQ::class)->findAll();
 

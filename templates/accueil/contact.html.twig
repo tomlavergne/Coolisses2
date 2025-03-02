@@ -22,10 +22,8 @@
     }
 </style>
 
-<section class="flex flex-col gap-8 items-center py-32">
-
+<section class="flex flex-col gap-8 items-center">
     <h2 class="text-4xl font-bold w-fit">Une question&nbsp?</h2>
-
     <div class="grid grid-cols-2 gap-12">
         {% if questions is defined %}
             <div class="flex flex-col gap-4">
@@ -35,7 +33,7 @@
                         <div class="p-4 flex flex-col border gap-2 border-black bg-[#fbeef3]">
                             <div class="flex justify-between">
                                 <span class="text-md font-semibold">{{ question.question }}</span>
-                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
                             </div>
                             <div class="">
                                 <p>{{ question.reponse }}</p>
@@ -45,28 +43,18 @@
                     {% endfor %}
                 </div>
             </div>
-            {% endif %}
+        {% endif %}
 
         {% if form is defined %}
-        <div class="border border-black p-8 bg-[#fbeef3]">
+        <div class="p-8">
             {{ form_start(form) }}
 
             <div class="flex flex-col gap-4">
-                <h4 class="text-xl font-bold">Envoyez-nous un message :</h4>
+                <h4 class="text-xl font-bold">Ecrivez-nous :</h4>
                 <div class="flex flex-col gap-1">
-                    {{ form_label(form.nom, 'Nom : ') }}
-                    {{ form_widget(form.nom) }}
-                    {{ form_errors(form.nom) }}
-                </div>
-                <div class="flex flex-col gap-1">
-                    {{ form_label(form.email, 'Email : ') }}
+                    {{ form_label(form.email, 'Votre adresse e-mail : ') }}
                     {{ form_widget(form.email) }}
                     {{ form_errors(form.email) }}
-                </div>
-                <div class="flex flex-col gap-1">
-                    {{ form_label(form.objet, 'Objet : ') }}
-                    {{ form_widget(form.objet) }}
-                    {{ form_errors(form.objet) }}
                 </div>
                 <div class="flex flex-col gap-1">
                     {{ form_label(form.message, 'Message : ') }}
@@ -75,7 +63,7 @@
                 </div>
 
                 <div class="flex justify-center">
-                    <button class="px-4 py-2 font-medium text-lg border-2 border-black">Envoyer</button>
+                    <button class="px-4 py-2 font-medium text-lg bg-[#f2e48d] cursor-pointer">Envoyer</button>
                 </div>
 
                 {{ form_end(form) }}

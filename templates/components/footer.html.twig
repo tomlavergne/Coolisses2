@@ -57,9 +57,13 @@
     <div class="flex flex-col justify-between items-center gap-4 md:flex-row">
         <div class="flex flex-col justify-between items-center gap-4 md:flex-row">
             <p>© 2024 Coolisses</p>
-            <p>Site réalisé par <a href="https://polygonagence.fr" target="_blank">Polygon agence digitale</a></p>
+            <p>Site réalisé par <a class="hover:underline" href="https://polygonagence.fr" target="_blank">Polygon agence digitale</a></p>
         </div>
-        <a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
+        <div class="flex gap-4">
+            <a href="{{ path('app_mentions_legales') }}">Questions fréquentes</a>
+            <a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
+        </div>
+
 
     </div>
 

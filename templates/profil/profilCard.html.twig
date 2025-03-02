@@ -1,0 +1,13 @@
+<div class="relative flex flex-col justify-end group aspect-[3/4] bg-[url({{ vich_uploader_asset(profil, 'imageFile') }})] bg-cover bg-center bg-no-repeat">
+    <div class="absolute opacity-0 group-hover:opacity-25 bg-black h-full w-full z-100 transition duration-100"></div>
+    <div class="flex flex-col gap-2 p-4 bg-white group-hover:bg-[#eeeeee] overflow-hidden z-200">
+        {% if profil.metier|length > 0 %}
+            <div class="hidden group-hover:flex flex-wrap gap-2">
+                {% for metier in profil.metier %}
+                    {% include '/components/badge.html.twig' with {'color': metier.couleur, 'titre': metier.nom} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <span class="line-clamp-1 group-hover:line-clamp-none text-xl font-semibold hover:underline">{{ profil.prenom }} {{ profil.nom }}</span>
+    </div>
+</div>

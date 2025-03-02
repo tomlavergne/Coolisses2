@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_tags %}
+    <meta name="description" content="Trouvez des professionnels de l'audiovisuel et du cinema en Charente Maritime grâce à Coolisses, l'association rochelaise de professionnels du cinéma">
+    <meta name="keywords" content="coolisses, association, cinema, la rochelle, services, professionnels, base de données, mise en relation, location, materiel, camera, ateliers, formations, stages, ressources, location, materiel, accompagnement">
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block title %}{{ profil.nom }}{% endblock %}
+
+{% block body %}
+
+    <section class="flex flex-col p-8 gap-8">
+        <h1 class="text-xl font-bold">{{ profil.prenom }} {{ profil.nom }}</h1>
+        <div>{{ profil.description }}</div>
+
+        {% if profil.metier|length > 0 %}
+            <div class="flex flex-wrap gap-2">
+                {% for metier in profil.metier %}
+                    {% include '/components/badge.html.twig' with {'color': metier.couleur, 'titre': metier.nom} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <a href="/{{ profil.PDFName }}">
+            <button class="px-4 py-2 bg-[#f2e48d]">Voir le CV</button>
+        </a>
+
+        <img  src="{{ vich_uploader_asset(profil, 'imageFile') }}" alt="" class="h-32 w-32 object-cover">
+        <span>{{ profil.tailleEnCentimetre }}</span>
+        <span>{{ profil.localisation }}</span>
+        <span>{{ profil.genre.nom }}</span>
+        <span>{{ profil.experience.nom }}</span>
+        {% if profil.langues|length > 0 %}
+            <div class="flex flex-wrap gap-2">
+                {% for langue in profil.langues %}
+                    <img src="{{ vich_uploader_asset(langue, 'imageFile') }}" alt="" class="h-8 w-auto">
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+
+    </section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

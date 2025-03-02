@@ -1,0 +1,24 @@
+<style>
+
+</style>
+
+<section class="h-64 flex flex-col gap-8 items-center py-32 bg-[#DDDDDD]">
+
+</section>
+
+{% block javascripts %}
+    {% if sended is defined %}
+    <script >
+        const displayAlert = {{ sended ? 'true' : 'false' }};
+        const alert = document.getElementById('alert-contact');
+        const closeBtn = document.getElementById('alert-btn-close')
+        if(displayAlert){
+            alert.style.display = 'block';
+        }
+
+        closeBtn.addEventListener("click", () => {
+            alert.style.display = 'none';
+        })
+    </script>
+    {% endif %}
+{% endblock %}

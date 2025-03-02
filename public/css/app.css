@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
-p, h1, h2, h3, h4, h5, span, a, div {
+p, h1, h2, h3, h4, h5, span, a, div, button {
     font-family: "Sora", serif;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
 }

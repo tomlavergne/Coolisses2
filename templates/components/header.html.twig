@@ -6,6 +6,21 @@
         width: 100%;
         z-index: 900
     }
+
+     #menu-btn.open span:nth-child(1) {
+         transform: rotate(45deg);
+         transform-origin: center;
+         translate: 0;
+     }
+    #menu-btn.open span:nth-child(2) {
+        opacity: 0;
+    }
+    #menu-btn.open span:nth-child(3) {
+        transform: rotate(-45deg);
+        transform-origin: center;
+        translate: 0;
+    }
+
 </style>
 
 {% if alert is defined and alert is not null %}
@@ -23,82 +38,71 @@
     </div>
 {% endif %}
 
-<header class="p-4 bg-white flex justify-between ">
-    <div class="flex items-center gap-4">
-        <a href="/">
-            <div class="bg-black h-8 w-24"></div>
-            {# <img class="header-logo" src="{{ asset('img/logo.png') }}" alt=""> #}
-        </a>
-        <nav class="hidden lg:flex items-center gap-4">
-            <a href="/">Accueil</a>
-            <div class="group">
-                <a class="flex items-center gap-2" href="/services">
-                    Nos services
-                    <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
-                </a>
-                <div class="absolute invisible pt-2 group-hover:visible">
-                    <div class="flex flex-col border border-black p-2 gap-1 bg-white">
-                        <a href="/formations">Formation professionnelle</a>
-                        <a href="/stages">Stage de découverte</a>
-                        <a href="/miseenrelation">Mise en relation</a>
-                        <a href="/locations">Location de materiel</a>
+<header class="bg-white">
+    <div class="px-8 py-4 flex justify-between ">
+        <div class="flex items-center gap-4">
+            <a href="/">
+                <div class="bg-black h-8 w-24"></div>
+                {# <img class="header-logo" src="{{ asset('img/logo.png') }}" alt=""> #}
+            </a>
+            <nav class="hidden lg:flex items-center gap-4">
+                <a class="hover:underline" href="/">Accueil</a>
+                <div class="group">
+                    <a class="flex items-center gap-2" href="/services">
+                        Nos services
+                        <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                    </a>
+                    <div class="absolute invisible pt-2 group-hover:visible">
+                        <div class="flex flex-col p-4 gap-2 shadow bg-white">
+                            <a class="hover:underline" href="/formations">Formation professionnelle</a>
+                            <a class="hover:underline" href="/stages">Stage de découverte</a>
+                            <a class="hover:underline" href="/profils">Profils</a>
+                            <a class="hover:underline" href="/locations">Location de materiel</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="group">
-                <a class="flex items-center gap-2" href="/services">
-                    Nos réalisations
-                    <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
-                </a>
-                <div class="absolute invisible pt-2 group-hover:visible bg-white">
-                    <div class="flex flex-col border border-black p-2 gap-1">
-                        <a href="/realisations">Toutes les réalisations</a>
-                        <a href="{{ path('app_archive') }}">Archives</a>
+                <div class="group">
+                    <a class="flex items-center gap-2" href="/services">
+                        Nos réalisations
+                        <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                    </a>
+                    <div class="absolute invisible pt-2 group-hover:visible ">
+                        <div class="flex flex-col p-4 gap-2 shadow bg-white">
+                            <a class="hover:underline" href="/realisations">Toutes les réalisations</a>
+                            <a class="hover:underline" href="{{ path('app_archive') }}">Archives</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <a href="{{ path('app_actualites') }}">Actualité</a>
-        </nav>
-        
-    </div>
+                <a class="hover:underline" href="{{ path('app_actualites') }}">Actualité</a>
+            </nav>
 
-    <div class="flex items-center gap-4">
-        <div class="hidden sm:flex flex items-center gap-4">
-            <a href="{{ path('app_contact') }}">Nous contacter</a>
-            <a href="{{ path('app_adherer') }}" class="rounded-full w-fit bg-black text-white px-4 py-2">Adhérer</a>
         </div>
 
-        <button id="menu-btn" class="flex flex-col justify-center items-center w-6 h-4 relative cursor-pointer lg:hidden">
-            <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out -translate-y-2"></span>
-            <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out"></span>
-            <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out translate-y-2"></span>
-            <style>
-                #menu-btn.open span:nth-child(1) {
-                    transform: rotate(45deg);
-                    transform-origin: center;
-                    translate: 0;
-                }
-                #menu-btn.open span:nth-child(2) {
-                    opacity: 0;
-                }
-                #menu-btn.open span:nth-child(3) {
-                    transform: rotate(-45deg); 
-                    transform-origin: center;
-                    translate: 0;
-                }
-            </style>
-        </button>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex flex items-center gap-4">
+                <a class="hover:underline" href="{{ path('app_contact') }}">Nous contacter</a>
+                <a href="{{ path('app_adherer') }}" class="rounded-full w-fit bg-black text-white px-4 py-2">Adhérer</a>
+            </div>
+
+            <button id="menu-btn" class="flex flex-col justify-center items-center w-6 h-4 relative cursor-pointer lg:hidden">
+                <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out -translate-y-2"></span>
+                <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out"></span>
+                <span class="w-6 h-0.5 bg-black absolute transition-all duration-300 ease-in-out translate-y-2"></span>
+            </button>
+        </div>
+    </div>
+
+    <div id="drawer" class="flex flex-col gap-4 p-4 border-b border-black md:hidden" >
+        <a href="/">Accueil</a>
+        <a href="/services">Nos services</a>
+        <a href="{{ path('app_realisations') }}">Nos réalisations</a>
+        <a href="{{ path('app_actualites') }}">Actualité</a>
+        <a href="{{ path('app_contact') }}">Nous contacter</a>
+        <a href="{{ path('app_adherer') }}">Adhérer</a>
     </div>
 </header>
 
-<div id="drawer" class="flex flex-col gap-4 p-4 border-b border-black md:hidden" >
-    <a href="/">Accueil</a>
-    <a href="/services">Nos services</a>
-    <a href="{{ path('app_realisations') }}">Nos réalisations</a>
-    <a href="{{ path('app_actualites') }}">Actualité</a>
-    <a href="{{ path('app_contact') }}">Nous contacter</a>
-    <a href="{{ path('app_adherer') }}">Adhérer</a>
-</div>
+
 
 
 <script>

@@ -8,6 +8,7 @@ use App\Entity\Alerte;
 use App\Entity\ArticleLocation;
 use App\Entity\Atelier;
 use App\Entity\BruitDeCoolisses;
+use App\Entity\CategorieActualite;
 use App\Entity\CategorieFilm;
 use App\Entity\Contact;
 use App\Entity\Formation;
@@ -74,6 +75,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Profils', 'fas fa-user', Profil::class);
 
         yield MenuItem::section("Relations Base de donnée");
+        yield MenuItem::linkToCrud("Categorie d'articles", 'fas fa-icons', CategorieActualite::class);
         yield MenuItem::linkToCrud('Categorie de film', 'fas fa-icons', CategorieFilm::class);
         yield MenuItem::linkToCrud('Metier', 'fas fa-briefcase', Metier::class);
         yield MenuItem::linkToCrud('Langue', 'fas fa-flag', Langue::class);
